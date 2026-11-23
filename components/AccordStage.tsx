@@ -123,11 +123,11 @@ export default function AccordStage({ product: p, lang, priority = false, top }:
       // Cover-fit the still, then drift and breathe inside it.
       const r = imgAspect / (el.clientWidth / el.clientHeight);
       const f = p.accord.focus;
-      const zoom = f.zoom * (1 + 0.035 * Math.sin(time * 0.09));
+      const zoom = f.zoom * (1 + 0.07 * Math.sin(time * 0.25));
       const sx = (r >= 1 ? 1 / r : 1) / zoom;
       const sy = (r >= 1 ? 1 : r) / zoom;
-      const ox = f.x - 0.5 + 0.015 * Math.sin(time * 0.11) + lean.x * 0.012;
-      const oy = 0.5 - f.y + 0.012 * Math.cos(time * 0.13) - lean.y * 0.012; // texture v runs bottom-up
+      const ox = f.x - 0.5 + 0.05 * Math.sin(time * 0.3) + lean.x * 0.012;
+      const oy = 0.5 - f.y + 0.035 * Math.cos(time * 0.23) - lean.y * 0.012; // texture v runs bottom-up
       memory.setVideoTransform(sx, sy, ox, oy);
       const m = memory.update(dt);
       if (m) ascii.memoryTexture = m;

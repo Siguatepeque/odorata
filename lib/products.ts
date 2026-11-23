@@ -1,7 +1,7 @@
 // Product data shaped like the Shopify records that will replace it.
 // Notes come from the published pyramid (Parfumo, Notino). Price and stock are placeholders.
 
-/** Prefix for files in public/, so the static GitHub Pages copy finds them under /marginalia. */
+/** Prefix for files in public/, so the static GitHub Pages copy finds them under /odorata. */
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export type Lang = "es" | "en";

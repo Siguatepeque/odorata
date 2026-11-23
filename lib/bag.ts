@@ -4,7 +4,7 @@ import { PRODUCTS } from "./products";
 // Front-end bag, persisted in localStorage. Shopify's cart API replaces this later.
 export type Line = { handle: string; qty: number };
 
-const KEY = "marginalia-bag";
+const KEY = "odorata-bag";
 const EMPTY: Line[] = [];
 let lines: Line[] = EMPTY;
 let loaded = false;

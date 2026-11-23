@@ -13,7 +13,7 @@ export const generateStaticParams = () => LANGS.map((lang) => ({ lang }));
 export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Promise<Metadata> {
   const { lang } = await params;
   return {
-    title: { default: "Marginalia", template: "%s · Marginalia" },
+    title: { default: "Odorata", template: "%s · Odorata" },
     description: lang === "en" ? "Fragrances in Honduras. Final prices in lempiras, home delivery." : "Perfumes en Honduras. Precio final en lempiras, entrega a domicilio.",
   };
 }
@@ -30,7 +30,7 @@ export default async function Layout({ children, params }: LayoutProps<"/[lang]"
         </a>
         <header className="top">
           <Link href={`/${lang}`} className="wordmark">
-            Marginalia
+            Odorata
           </Link>
           <nav className="top-nav" aria-label={lang === "es" ? "Principal" : "Main"}>
             <Link href={`/${lang}`}>{t.nav.fragrances}</Link>
@@ -41,7 +41,7 @@ export default async function Layout({ children, params }: LayoutProps<"/[lang]"
         <main id="main">{children}</main>
         <footer className="foot">
           <Link href={`/${lang}`} className="wordmark">
-            Marginalia
+            Odorata
           </Link>
           <nav className="foot-nav" aria-label={lang === "es" ? "Pie de página" : "Footer"}>
             <Link href={`/${lang}`}>{t.nav.fragrances}</Link>

@@ -31,7 +31,7 @@ A curator, not a brand: the store frames many houses (designer, niche, and "insp
 
 ## Brand Commitments
 
-- Retailer name is a placeholder: **Marginalia** (working name, to be replaced).
+- Retailer name: **Odorata**.
 - Products, houses, and prices in the mock are illustrative placeholders, to be replaced by Shopify data.
 
 ## Evidence on Hand

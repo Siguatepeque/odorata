@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
-// GITHUB_PAGES=1 builds a static copy for siguatepeque.github.io/marginalia; otherwise it's the normal app.
+// GITHUB_PAGES=1 builds a static copy for siguatepeque.github.io/odorata; otherwise it's the normal app.
 const pages = process.env.GITHUB_PAGES === "1";
-const basePath = pages ? "/marginalia" : "";
+const basePath = pages ? "/odorata" : "";
 
 const nextConfig: NextConfig = {
   // Partial prerendering needs a server, so the static copy goes without it.

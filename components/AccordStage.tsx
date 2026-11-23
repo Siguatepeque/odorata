@@ -6,7 +6,7 @@ import { EffectComposer, RenderPass, EffectPass, BlendFunction } from "postproce
 import { AsciiEffect, InkBleedEffect, MemoryGrid } from "@niccolofanton/morphing-ascii-shader";
 import { PRESET, SOURCE_FRAG, SOURCE_VERT, patchDarkMode, type Grid, type Ascii } from "@/lib/glyph";
 import { dict } from "@/lib/i18n";
-import { NOTES, type Lang, type Product } from "@/lib/products";
+import type { Lang, Product } from "@/lib/products";
 
 const motionQuery = () => matchMedia("(prefers-reduced-motion: reduce)");
 const subscribeMotion = (cb: () => void) => {
@@ -162,23 +162,7 @@ export default function AccordStage({ product: p, lang, priority = false, top }:
         alt={`${p.name}, ${p.house}, ${p.type[lang]} ${p.ml} ml`}
         fetchPriority={priority ? "high" : undefined}
       />
-      {/* ponytail: four caption treatments under review (?ver=1 switcher); keep the chosen one, delete the rest */}
-      <figcaption className="stage-caption cap cap-a">
-        <span className="stage-tier">{t.stage.top}</span>
-        <strong>{p.accord.note[lang]}</strong>
-        <span>{p.accord.also[lang]}</span>
-      </figcaption>
-      <p className="cap cap-b">
-        {t.stage.top} <span aria-hidden="true">—</span> <strong>{p.accord.note[lang]}</strong>
-      </p>
-      <ol className="cap cap-c">
-        {(["top", "heart", "base"] as const).map((k, i) => (
-          <li key={k} aria-current={i === 0 ? "step" : undefined}>
-            <span>{t.pyramid[k]}</span> <strong>{NOTES[p.pyramid[k][0][0]].name[lang]}</strong>
-          </li>
-        ))}
-      </ol>
-      <a className="cap cap-d" href="#notas">
+      <a className="stage-notes" href="#notas">
         <span>
           <span className="stage-tier">{t.stage.top}</span>
           <strong>{p.accord.note[lang]}</strong>
@@ -186,7 +170,7 @@ export default function AccordStage({ product: p, lang, priority = false, top }:
             {lang === "es" ? "Ver las" : "See all"} {Object.values(p.pyramid).flat().length} {lang === "es" ? "notas" : "notes"}
           </span>
         </span>
-        <span className="cap-arrow" aria-hidden="true">
+        <span className="notes-arrow" aria-hidden="true">
           <svg width="14" height="14" viewBox="0 0 14 14">
             <path d="M7 2v9M3 7.5 7 11.5l4-4" fill="none" stroke="currentColor" strokeWidth="1.8" />
           </svg>

@@ -20,6 +20,16 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/p/[hand
   const p = product(handle);
   if (!p) notFound();
   const t = dict(lang);
+  const specs = (variant: string) => (
+    <dl className={`specs ${variant}`}>
+      {p.facts.slice(0, 3).map((f) => (
+        <div key={f.label.es}>
+          <dt>{f.label[lang]}</dt>
+          <dd>{f.value[lang]}</dd>
+        </div>
+      ))}
+    </dl>
+  );
 
   return (
     <article className="pdp">
@@ -31,23 +41,15 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/p/[hand
             {p.type[lang]} · {p.ml} ml · {p.year}
           </span>
         </p>
+        {specs("specs-strip")}
       </header>
 
-      {/* ponytail: details as a glass spec band vs table under review (?ver=1); keep one */}
+      {/* ponytail: details as table, strip or glass band under review (?ver=1); keep one */}
       <AccordStage
         product={p}
         lang={lang}
         priority
-        top={
-          <dl className="pdp-tags">
-            {p.facts.slice(0, 3).map((f) => (
-              <div key={f.label.es}>
-                <dt>{f.label[lang]}</dt>
-                <dd>{f.value[lang]}</dd>
-              </div>
-            ))}
-          </dl>
-        }
+        top={specs("specs-glass")}
       />
 
       <div className="pdp-body">

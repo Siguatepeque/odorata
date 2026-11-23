@@ -304,51 +304,36 @@ ol {
   }
 }
 
-.stage-caption {
-  position: absolute;
-  left: 12px;
-  bottom: 12px;
-  gap: 2px;
-  max-width: min(46%, 300px);
-  padding: 12px 16px 14px;
-  font-size: 14px;
-  line-height: 1.3;
-}
-
-/* Frosted glass: the bottle and the field stay visible behind the note, softened enough to read over. */
-.stage-caption,
-.stage-toggle {
+/* Frosted glass: the bottle and the field stay visible behind, softened enough to read over. */
+.stage-notes,
+.stage-toggle,
+.specs-glass {
   background: rgb(255 255 255 / 0.3);
   -webkit-backdrop-filter: blur(10px) saturate(1.4);
   backdrop-filter: blur(10px) saturate(1.4);
+}
+
+.stage-notes,
+.stage-toggle {
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.45);
 }
 
-/* the panel is mostly clear, so the words carry their own soft halo */
-.stage-caption {
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .stage-notes,
+  .stage-toggle,
+  .specs-glass {
+    background: rgb(255 255 255 / 0.92);
+  }
+}
+
+/* The panels are mostly clear, so the words carry their own soft halo. */
+.stage-notes,
+.specs-glass {
   text-shadow: 0 0 10px rgb(255 255 255 / 0.9), 0 0 2px rgb(255 255 255 / 0.9);
 }
 
 .stage-toggle svg {
   filter: drop-shadow(0 0 3px rgb(255 255 255 / 0.9));
-}
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .stage-caption,
-  .stage-toggle {
-    background: rgb(255 255 255 / 0.92);
-  }
-}
-
-.stage-caption strong {
-  font-size: 22px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-}
-
-.stage-caption span:last-child {
-  color: #3a3a3a; /* darker than --ink-2: it sits on glass */
 }
 
 .stage-tier {
@@ -378,107 +363,48 @@ ol {
   color: var(--paper);
 }
 
-/* ---------- Caption treatments under review (one shows at a time) ---------- */
-
-.cap {
-  display: none;
-}
-
-:root:not([data-cap]) .cap-a,
-:root[data-cap="a"] .cap-a {
-  display: grid;
-}
-
-:root[data-cap="b"] .cap-b,
-:root[data-cap="c"] .cap-c,
-:root[data-cap="d"] .cap-d {
-  display: flex;
-}
-
-/* B: just words on the field */
-.cap-b {
-  position: absolute;
-  left: 18px;
-  bottom: 16px;
-  gap: 8px;
-  align-items: baseline;
-  font-size: 13px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  text-shadow: 0 0 12px #fff, 0 0 3px #fff, 0 0 1px #fff;
-}
-
-.cap-b strong {
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: -0.01em;
-}
-
-/* C: the whole journey on one thin glass band */
-.cap-c {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  justify-content: center;
-  gap: clamp(14px, 4vw, 48px);
-  padding: 12px 16px;
-  list-style: none;
-  font-size: 14px;
-  background: rgb(255 255 255 / 0.3);
-  -webkit-backdrop-filter: blur(10px) saturate(1.4);
-  backdrop-filter: blur(10px) saturate(1.4);
-  text-shadow: 0 0 8px rgb(255 255 255 / 0.9);
-}
-
-.cap-c li {
-  display: flex;
-  gap: 6px;
-  align-items: baseline;
-  color: #3a3a3a;
-}
-
-.cap-c li span {
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.cap-c li:not([aria-current]) {
-  opacity: 0.55;
-}
-
-.cap-c li[aria-current] strong {
-  font-weight: 900;
-  color: var(--ink);
-}
-
-/* D: a chip with the three lead notes that takes you to the Notes section */
-.cap-d {
+/* The top note, and the way down to all of them. Wide enough to cross the bottle: glass needs something behind it. */
+.stage-notes {
   position: absolute;
   left: 12px;
   bottom: 12px;
+  display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 16px;
-  min-width: min(46%, 250px); /* just reaches the bottle edge: glass needs something behind it */
+  min-width: min(46%, 262px);
+  min-height: 92px;
   padding: 12px 12px 14px 16px;
   text-decoration: none;
   color: var(--ink);
-  background: rgb(255 255 255 / 0.3);
-  -webkit-backdrop-filter: blur(10px) saturate(1.4);
-  backdrop-filter: blur(10px) saturate(1.4);
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.45);
-  text-shadow: 0 0 8px rgb(255 255 255 / 0.9);
 }
 
-.cap-d:hover {
+.stage-notes:hover {
   background: rgb(255 255 255 / 0.6);
 }
 
-.cap-arrow {
+.stage-notes > span:first-child {
+  display: grid;
+  gap: 2px;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.stage-notes strong {
+  font-size: 22px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.stage-notes > span:first-child > span:last-child {
+  color: #3a3a3a;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.notes-arrow {
   display: grid;
   place-items: center;
   width: 32px;
@@ -487,101 +413,103 @@ ol {
   transition: background-color 160ms, color 160ms;
 }
 
-.cap-d:hover .cap-arrow {
+.stage-notes:hover .notes-arrow {
   background: var(--ink);
   color: var(--paper);
-}
-
-.cap-d > span:first-child {
-  display: grid;
-  gap: 2px;
-  font-size: 14px;
-  line-height: 1.3;
-}
-
-.cap-d > span:first-child > span:last-child {
-  color: #3a3a3a;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-}
-
-
-.cap-d strong {
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: 22px;
-  letter-spacing: -0.01em;
 }
 
 #notas {
   scroll-margin-top: 84px;
 }
 
-/* Details: table, or a spec strip under the name (type, not chips: nothing here is pressable) */
-/* A glass band across the top of the stage: the cap and the field show through it. */
-.pdp-tags {
+/* ---------- Details: table, strip, or glass band (?ver=1 switcher; keep one) ---------- */
+
+.specs {
   display: none;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.specs > div {
+  display: grid;
+  gap: 4px;
+  align-content: start;
+}
+
+.specs dt {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-2);
+}
+
+.specs dd {
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* Strip: type under the name, split by hairlines */
+.specs-strip {
+  margin-top: 18px;
+  border-top: 1px solid var(--hair);
+}
+
+.specs-strip > div {
+  padding: 12px 16px 0 0;
+}
+
+.specs-strip > div + div {
+  padding-left: 16px;
+  border-left: 1px solid var(--hair);
+}
+
+/* Glass: the same strip as a band, with the image grown up behind it */
+.specs-glass {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   min-height: var(--band);
   padding: 2px 4px 12px;
-  background: rgb(255 255 255 / 0.3);
-  -webkit-backdrop-filter: blur(10px) saturate(1.4);
-  backdrop-filter: blur(10px) saturate(1.4);
   box-shadow: inset 0 -1px 0 rgb(255 255 255 / 0.6);
-  text-shadow: 0 0 8px rgb(255 255 255 / 0.9);
 }
 
-:root[data-details="tags"] .stage {
+.specs-glass > div {
+  padding: 12px 12px 0;
+}
+
+.specs-glass > div + div {
+  border-left: 1px solid rgb(255 255 255 / 0.6);
+}
+
+.specs-glass dt {
+  color: #3a3a3a;
+}
+
+:root[data-details="strip"] .specs-strip,
+:root[data-details="glass"] .specs-glass {
+  display: grid;
+}
+
+:root[data-details="strip"] .details-table,
+:root[data-details="glass"] .details-table {
+  display: none;
+}
+
+:root[data-details="glass"] .stage {
   --band: 68px;
 }
 
 @media (max-width: 560px) {
-  :root[data-details="tags"] .stage {
+  :root[data-details="glass"] .stage {
     --band: 96px; /* the values wrap on phones */
   }
 }
 
-:root[data-details="tags"] .stage-toggle {
+:root[data-details="glass"] .stage-toggle {
   top: calc(var(--band) + 12px);
-}
-
-:root[data-details="tags"] .pdp-tags {
-  display: grid;
-}
-
-:root[data-details="tags"] .details-table {
-  display: none;
-}
-
-.pdp-tags > div {
-  display: grid;
-  gap: 4px;
-  align-content: start;
-  padding: 12px 12px 0;
-}
-
-.pdp-tags > div + div {
-  border-left: 1px solid rgb(255 255 255 / 0.6);
-}
-
-.pdp-tags dt {
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #3a3a3a;
-}
-
-.pdp-tags dd {
-  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
 }
 
 /* Review switcher (temporary) */

@@ -1,6 +1,9 @@
 // Product data shaped like the Shopify records that will replace it.
 // Notes come from the published pyramid (Parfumo, Notino). Price and stock are placeholders.
 
+/** Prefix for files in public/, so the static GitHub Pages copy finds them under /marginalia. */
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export type Lang = "es" | "en";
 export type Text = Record<Lang, string>;
 
@@ -50,10 +53,10 @@ export const PRODUCTS: Product[] = [
     year: 2024,
     price: 2450,
     stock: 6,
-    photo: { src: "/products/liquid-brun.png", w: 356, h: 981 },
+    photo: { src: `${BASE}/products/liquid-brun.png`, w: 356, h: 981 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
-      image: "/products/cinnamon-plate.jpg",
+      image: `${BASE}/products/cinnamon-plate.jpg`,
       focus: { x: 0.6, y: 0.46, zoom: 1.22 },
       also: { es: "con cardamomo, azahar y bergamota", en: "with cardamom, orange blossom and bergamot" },
     },
@@ -88,10 +91,10 @@ export const PRODUCTS: Product[] = [
     year: 2023,
     price: 9950,
     stock: 2,
-    photo: { src: "/products/althair.png", w: 476, h: 986 },
+    photo: { src: `${BASE}/products/althair.png`, w: 476, h: 986 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
-      image: "/products/cinnamon-plate.jpg",
+      image: `${BASE}/products/cinnamon-plate.jpg`,
       focus: { x: 0.6, y: 0.46, zoom: 1.22 },
       also: { es: "con cardamomo, azahar y bergamota", en: "with cardamom, orange blossom and bergamot" },
     },
@@ -122,10 +125,10 @@ export const PRODUCTS: Product[] = [
     year: 2024,
     price: 2250,
     stock: 4,
-    photo: { src: "/products/monarque.png", w: 239, h: 471 },
+    photo: { src: `${BASE}/products/monarque.png`, w: 239, h: 471 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
-      image: "/products/cinnamon-plate.jpg",
+      image: `${BASE}/products/cinnamon-plate.jpg`,
       focus: { x: 0.6, y: 0.46, zoom: 1.22 },
       also: { es: "con azahar, cardamomo y bergamota", en: "with orange blossom, cardamom and bergamot" },
     },
@@ -159,10 +162,10 @@ export const PRODUCTS: Product[] = [
     year: 2025,
     price: 1450,
     stock: 7,
-    photo: { src: "/products/island-vanilla-dunes.png", w: 272, h: 600 },
+    photo: { src: `${BASE}/products/island-vanilla-dunes.png`, w: 272, h: 600 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
-      image: "/products/cinnamon-plate.jpg",
+      image: `${BASE}/products/cinnamon-plate.jpg`,
       focus: { x: 0.6, y: 0.46, zoom: 1.22 },
       also: { es: "con cardamomo y bergamota", en: "with cardamom and bergamot" },
     },
@@ -197,10 +200,10 @@ export const PRODUCTS: Product[] = [
     year: 2025,
     price: 1650,
     stock: 5,
-    photo: { src: "/products/historic-sahara.png", w: 266, h: 600 },
+    photo: { src: `${BASE}/products/historic-sahara.png`, w: 266, h: 600 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
-      image: "/products/cinnamon-plate.jpg",
+      image: `${BASE}/products/cinnamon-plate.jpg`,
       focus: { x: 0.6, y: 0.46, zoom: 1.22 },
       also: { es: "con cardamomo y bergamota", en: "with cardamom and bergamot" },
     },
@@ -234,10 +237,10 @@ export const PRODUCTS: Product[] = [
     year: 2024,
     price: 1250,
     stock: 9,
-    photo: { src: "/products/art-of-nature-ii.png", w: 320, h: 600 },
+    photo: { src: `${BASE}/products/art-of-nature-ii.png`, w: 320, h: 600 },
     accord: {
       note: { es: "Manzana", en: "Apple" },
-      image: "/products/apple-plate.jpg",
+      image: `${BASE}/products/apple-plate.jpg`,
       focus: { x: 0.38, y: 0.5, zoom: 1.15 },
       also: { es: "con mandarina, bergamota y olíbano", en: "with mandarin, bergamot and frankincense" },
     },
@@ -266,26 +269,26 @@ export const PRODUCTS: Product[] = [
 
 // Every note with its picture. Molecules (ambroxan, musk) are drawn, since they are made in a lab.
 export const NOTES: Record<string, { name: Text; img: string }> = {
-  canela: { name: { es: "Canela", en: "Cinnamon" }, img: "/notes/ingredients/canela.jpg" },
-  azahar: { name: { es: "Azahar", en: "Orange blossom" }, img: "/notes/ingredients/azahar.jpg" },
-  cardamomo: { name: { es: "Cardamomo", en: "Cardamom" }, img: "/notes/ingredients/cardamomo.jpg" },
-  bergamota: { name: { es: "Bergamota", en: "Bergamot" }, img: "/notes/ingredients/bergamota.jpg" },
-  vainilla: { name: { es: "Vainilla", en: "Vanilla" }, img: "/notes/ingredients/vainilla.jpg" },
-  elemi: { name: { es: "Elemí", en: "Elemi" }, img: "/notes/ingredients/elemi.jpg" },
-  praline: { name: { es: "Praliné", en: "Praline" }, img: "/notes/ingredients/praline.jpg" },
-  ambroxan: { name: { es: "Ámbar gris", en: "Ambroxan" }, img: "/notes/ingredients/ambroxan.jpg" },
-  almizcle: { name: { es: "Almizcle", en: "Musk" }, img: "/notes/ingredients/almizcle.jpg" },
-  guayaco: { name: { es: "Madera de guayaco", en: "Guaiac wood" }, img: "/notes/ingredients/guayaco.jpg" },
-  almendra: { name: { es: "Almendra", en: "Almond" }, img: "/notes/ingredients/almendra.jpg" },
-  tonka: { name: { es: "Haba tonka", en: "Tonka bean" }, img: "/notes/ingredients/tonka.jpg" },
-  ambar: { name: { es: "Ámbar", en: "Amber" }, img: "/notes/ingredients/ambar.jpg" },
-  azucar: { name: { es: "Azúcar", en: "Sugar" }, img: "/notes/ingredients/azucar.jpg" },
-  madera: { name: { es: "Maderas", en: "Woods" }, img: "/notes/ingredients/madera.jpg" },
-  manzana: { name: { es: "Manzana", en: "Apple" }, img: "/notes/ingredients/manzana.jpg" },
-  mandarina: { name: { es: "Mandarina", en: "Mandarin" }, img: "/notes/ingredients/mandarina.jpg" },
-  olibano: { name: { es: "Olíbano", en: "Frankincense" }, img: "/notes/ingredients/olibano.jpg" },
-  rosa: { name: { es: "Rosa", en: "Rose" }, img: "/notes/ingredients/rosa.jpg" },
-  cedro: { name: { es: "Cedro", en: "Cedar" }, img: "/notes/ingredients/cedro.jpg" },
+  canela: { name: { es: "Canela", en: "Cinnamon" }, img: `${BASE}/notes/ingredients/canela.jpg` },
+  azahar: { name: { es: "Azahar", en: "Orange blossom" }, img: `${BASE}/notes/ingredients/azahar.jpg` },
+  cardamomo: { name: { es: "Cardamomo", en: "Cardamom" }, img: `${BASE}/notes/ingredients/cardamomo.jpg` },
+  bergamota: { name: { es: "Bergamota", en: "Bergamot" }, img: `${BASE}/notes/ingredients/bergamota.jpg` },
+  vainilla: { name: { es: "Vainilla", en: "Vanilla" }, img: `${BASE}/notes/ingredients/vainilla.jpg` },
+  elemi: { name: { es: "Elemí", en: "Elemi" }, img: `${BASE}/notes/ingredients/elemi.jpg` },
+  praline: { name: { es: "Praliné", en: "Praline" }, img: `${BASE}/notes/ingredients/praline.jpg` },
+  ambroxan: { name: { es: "Ámbar gris", en: "Ambroxan" }, img: `${BASE}/notes/ingredients/ambroxan.jpg` },
+  almizcle: { name: { es: "Almizcle", en: "Musk" }, img: `${BASE}/notes/ingredients/almizcle.jpg` },
+  guayaco: { name: { es: "Madera de guayaco", en: "Guaiac wood" }, img: `${BASE}/notes/ingredients/guayaco.jpg` },
+  almendra: { name: { es: "Almendra", en: "Almond" }, img: `${BASE}/notes/ingredients/almendra.jpg` },
+  tonka: { name: { es: "Haba tonka", en: "Tonka bean" }, img: `${BASE}/notes/ingredients/tonka.jpg` },
+  ambar: { name: { es: "Ámbar", en: "Amber" }, img: `${BASE}/notes/ingredients/ambar.jpg` },
+  azucar: { name: { es: "Azúcar", en: "Sugar" }, img: `${BASE}/notes/ingredients/azucar.jpg` },
+  madera: { name: { es: "Maderas", en: "Woods" }, img: `${BASE}/notes/ingredients/madera.jpg` },
+  manzana: { name: { es: "Manzana", en: "Apple" }, img: `${BASE}/notes/ingredients/manzana.jpg` },
+  mandarina: { name: { es: "Mandarina", en: "Mandarin" }, img: `${BASE}/notes/ingredients/mandarina.jpg` },
+  olibano: { name: { es: "Olíbano", en: "Frankincense" }, img: `${BASE}/notes/ingredients/olibano.jpg` },
+  rosa: { name: { es: "Rosa", en: "Rose" }, img: `${BASE}/notes/ingredients/rosa.jpg` },
+  cedro: { name: { es: "Cedro", en: "Cedar" }, img: `${BASE}/notes/ingredients/cedro.jpg` },
 };
 
 export const product = (handle: string) => PRODUCTS.find((p) => p.handle === handle);

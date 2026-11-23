@@ -49,7 +49,7 @@ export const PRODUCTS: Product[] = [
     },
     facts: [
       { label: { es: "Para", en: "For" }, value: { es: "Hombre o mujer", en: "Anyone" } },
-      { label: { es: "Cuándo", en: "When" }, value: { es: "Noche, clima fresco, salidas", en: "Evenings, cool weather, going out" } },
+      { label: { es: "Cuándo", en: "When" }, value: { es: "Noche, clima fresco", en: "Evenings, cool weather" } },
       { label: { es: "Carácter", en: "Character" }, value: { es: "Dulce, especiado, cálido", en: "Sweet, spiced, warm" } },
       { label: { es: "Concentración", en: "Concentration" }, value: { es: "Eau de Parfum: dura varias horas", en: "Eau de Parfum: lasts several hours" } },
     ],

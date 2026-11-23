@@ -32,14 +32,14 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/p/[hand
           </span>
         </p>
         {/* ponytail: details as tags vs table under review (?ver=1); keep one */}
-        <ul className="pdp-tags">
-          {p.facts
-            .slice(0, 3)
-            .flatMap((f) => f.value[lang].split(", "))
-            .map((v) => (
-              <li key={v}>{v.charAt(0).toUpperCase() + v.slice(1)}</li>
-            ))}
-        </ul>
+        <dl className="pdp-tags">
+          {p.facts.slice(0, 3).map((f) => (
+            <div key={f.label.es}>
+              <dt>{f.label[lang]}</dt>
+              <dd>{f.value[lang]}</dd>
+            </div>
+          ))}
+        </dl>
       </header>
 
       <AccordStage product={p} lang={lang} priority />

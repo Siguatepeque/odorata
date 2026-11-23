@@ -179,17 +179,18 @@ export default function AccordStage({ product: p, lang, priority = false }: { pr
         ))}
       </ol>
       <a className="cap cap-d" href="#notas">
-        <span className="cap-thumbs" aria-hidden="true">
-          {(["top", "heart", "base"] as const).map((k) => (
-            // eslint-disable-next-line @next/next/no-img-element -- tiny note thumbnail
-            <img key={k} src={NOTES[p.pyramid[k][0][0]].img} alt="" width={40} height={40} />
-          ))}
-        </span>
         <span>
           <strong>
             {t.stage.top}: {p.accord.note[lang]}
           </strong>
-          <span>{lang === "es" ? "Ver las notas ↓" : "See the notes ↓"}</span>
+          <span>
+            {lang === "es" ? "Ver las" : "See all"} {Object.values(p.pyramid).flat().length} {lang === "es" ? "notas" : "notes"}
+          </span>
+        </span>
+        <span className="cap-arrow" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 14 14">
+            <path d="M7 2v9M3 7.5 7 11.5l4-4" fill="none" stroke="currentColor" strokeWidth="1.8" />
+          </svg>
         </span>
       </a>
       <button type="button" className="stage-toggle" aria-label={playing ? t.stage.pause : t.stage.play} title={playing ? t.stage.pause : t.stage.play} onClick={() => setPicked(!playing)}>

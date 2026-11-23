@@ -20,7 +20,23 @@ Every ratio above 1.6 depends on Jomashop's 20% coupon. Without it:
 | La Vie Est Belle | 2.02 | about 1.62 (assumes standard 20%) | marginal |
 | Good Girl | 1.73 | about 1.39 (assumes standard 20%) | fails |
 
-Margins use landed cost = price × 1.07 + US$5, card 4.25% + US$0.35, L120 delivery, L25 packaging. Only ADG EDT stays clearly profitable without the coupon. Coupon durability could not be confirmed: third-party coupon pages are inconsistent and some of the 20% offers are code-based.
+Margins use landed cost = price × 1.07 + US$5, card 4.25% + US$0.35, L120 delivery, L25 packaging. Only ADG EDT and ADG EDP 75 stay clearly profitable without the coupon (EDP 75 was missing from this table before 2026-11-23).
+
+## Coupon × customs stress test (added 2026-11-23)
+
+Margin at Privé −10%. Customs at the risk case = 15% DAI + 15% ISV, modelled as +32% on the goods cost ([[pricing-filter]]).
+
+| Bottle | Coupon, no customs | No coupon | Customs | No coupon + customs |
+|---|---|---|---|---|
+| ADG EDT 100 | 36% | 23% | 19% | 2% |
+| ADG EDP 75 | 37% | 24% | 21% | 4% |
+| La Vie Est Belle | 31% | 16% | 12% | −7% |
+| Most Wanted Parfum | 22% | 6% | 1% | −20% |
+| Eros EDP | 21% | 5% | 0% | −21% |
+| ADG Profondo EDP | 21% | 4% | −1% | −24% |
+| Club de Nuit Intense | 10% | −6% | −10% | −31% |
+
+Reading: only the two ADG bottles survive any single shock (no coupon, *or* customs charged). Nothing survives both. That makes them the right pair for the test import ([[decisions]]). Coupon durability could not be confirmed: third-party coupon pages are inconsistent and some of the 20% offers are code-based.
 
 ## Table
 

@@ -14,7 +14,11 @@ Start here in a new session. This is a working recommendation, not a conclusion:
 
 **What would change this:** evidence that customers want the range (messages asking for other ADG variants), or a wholesale account that cuts buy prices below Jomashop's coupon price ([[discounters]]).
 
-## First purchase (revised)
+## First purchase = the test import (revised 2026-11-23)
+
+Buy ADG EDT 100 and ADG EDP 75 together as the 2-bottle test import, once GBox confirms it takes perfume, ideally while the Black Friday coupon runs. About L4,080 landed. They are the only bottles that keep a margin if the coupon goes (about 23–24%) or if customs charges (about 19–21%), so the test carries little downside. Losing both at once leaves them about break-even ([[signals]]). The one shipment answers A3 (customs), A4 (GBox), A10 (real weight and freight) and gives a first sale against Privé.
+
+## Purchase order
 
 | Priority | Bottle | Why | Landed (L) |
 |---|---|---|---|

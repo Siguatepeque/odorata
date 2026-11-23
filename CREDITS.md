@@ -19,3 +19,4 @@ Kept in the repo, not shown on the site. CC BY and CC BY-SA images need this att
 
 - cinnamon-plate.jpg: Pexels photo 71128 by Pixabay, Pexels licence (feathered and lightened)
 - liquid-brun.png / .jpg: product photo from Notino. Placeholder; replace with your own photography before going live.
+- althair.png / .jpg: product photo from Notino. Placeholder; replace with your own photography before going live.

@@ -1,9 +1,25 @@
 import Link from "next/link";
-import { LEVELS, alternativesTo, byLevel, lempiras, product, type Lang, type Level, type Product } from "@/lib/products";
+import { LEVELS, alternativesTo, byLevel, lempiras, product, type Lang, type Product } from "@/lib/products";
 
 const T = {
-  es: { cheaper: "Alternativas más accesibles", inspired: "Inspirado en", save: (x: string) => `ahorras ${x}`, saveVs: (x: string) => `Ahorras ${x} frente al original.`, compare: "Comparar todas", similar: "Parecidos", original: "El original", others: "Otras alternativas" },
-  en: { cheaper: "More affordable alternatives", inspired: "Inspired by", save: (x: string) => `you save ${x}`, saveVs: (x: string) => `You save ${x} versus the original.`, compare: "Compare all", similar: "Similar", original: "The original", others: "Other alternatives" },
+  es: {
+    cheaper: "Alternativas más accesibles",
+    inspired: "Inspirado en",
+    less: (x: string) => `${x} menos`,
+    save: (x: string) => `Ahorras ${x}.`,
+    compare: (n: number) => `Comparar las ${n} alternativas`,
+    similar: "Parecidos",
+    original: "El original",
+  },
+  en: {
+    cheaper: "More affordable alternatives",
+    inspired: "Inspired by",
+    less: (x: string) => `${x} less`,
+    save: (x: string) => `You save ${x}.`,
+    compare: (n: number) => `Compare all ${n} alternatives`,
+    similar: "Similar",
+    original: "The original",
+  },
 };
 
 const Arrow = () => (
@@ -14,26 +30,26 @@ const Arrow = () => (
   </span>
 );
 
-function Row({ p, lang, vs, level }: { p: Product; lang: Lang; vs: Product; level?: Level }) {
+/** One perfume as a hairline row: name and house on the left, price on the right, then the arrow. */
+function Row({ p, lang, detail, saving, note }: { p: Product; lang: Lang; detail?: string; saving?: number; note?: string }) {
   const t = T[lang];
-  const cheap = p.price < vs.price ? p : vs;
-  const dear = cheap === p ? vs : p;
   return (
     <Link href={`/${lang}/p/${p.handle}`} className="alt-row">
-      {level && <span className="alt-level">{LEVELS[level].name[lang]}</span>}
       <span className="alt-name">
-        <strong>{p.name}</strong> · {p.house}
+        <strong>{p.name}</strong>
+        <span>{detail ? `${p.house} · ${detail}` : p.house}</span>
+        {note && <span className="alt-note">{note}</span>}
       </span>
       <span className="alt-price">
-        {lempiras(p.price)}
-        {cheap === p && <em>{t.save(lempiras(dear.price - cheap.price))}</em>}
+        <strong>{lempiras(p.price)}</strong>
+        {saving ? <span>{t.less(lempiras(saving))}</span> : null}
       </span>
       <Arrow />
     </Link>
   );
 }
 
-/** The small block under the price: cheaper alternatives on an original, the original on an alternative. */
+/** Under the price: cheaper alternatives on an original, the original on an alternative. */
 export function AltWidget({ product: p, lang }: { product: Product; lang: Lang }) {
   const t = T[lang];
   const alts = alternativesTo(p.handle);
@@ -44,10 +60,10 @@ export function AltWidget({ product: p, lang }: { product: Product; lang: Lang }
       <aside className="alt" aria-label={t.cheaper}>
         <p className="alt-title">{t.cheaper}</p>
         {alts.slice(0, 2).map((a) => (
-          <Row key={a.handle} p={a} lang={lang} vs={p} level={a.inspiredBy!.level} />
+          <Row key={a.handle} p={a} lang={lang} detail={LEVELS[a.inspiredBy!.level].name[lang]} saving={p.price - a.price} />
         ))}
         <a href="#parecidos" className="link alt-more">
-          {t.compare} ({alts.length}) ↓
+          {t.compare(alts.length)} ↓
         </a>
       </aside>
     );
@@ -56,10 +72,10 @@ export function AltWidget({ product: p, lang }: { product: Product; lang: Lang }
     return (
       <aside className="alt" aria-label={t.inspired}>
         <p className="alt-title">{t.inspired}</p>
-        <Row p={original} lang={lang} vs={p} />
-        <p className="alt-trade">
-          <strong>{LEVELS[p.inspiredBy!.level].name[lang]}.</strong> {p.inspiredBy!.tradeoff[lang]}{" "}
-          {original.price > p.price && <em>{t.saveVs(lempiras(original.price - p.price))}</em>}
+        <Row p={original} lang={lang} />
+        <p className="alt-verdict">
+          <strong>{LEVELS[p.inspiredBy!.level].name[lang]}.</strong> {p.inspiredBy!.tradeoff[lang]}
+          {original.price > p.price && <> {t.save(lempiras(original.price - p.price))}</>}
         </p>
       </aside>
     );
@@ -67,40 +83,7 @@ export function AltWidget({ product: p, lang }: { product: Product; lang: Lang }
   return null;
 }
 
-function Card({ p, lang, vs }: { p: Product; lang: Lang; vs?: Product }) {
-  const t = T[lang];
-  const saving = vs && p.price < vs.price ? vs.price - p.price : 0;
-  return (
-    <li>
-      <Link href={`/${lang}/p/${p.handle}`} className="sim-card">
-        <span className="sim-tile">
-          {p.photo ? (
-            // eslint-disable-next-line @next/next/no-img-element -- small cut-out
-            <img src={p.photo.src} alt="" width={p.photo.w} height={p.photo.h} loading="lazy" />
-          ) : (
-            <span className="sim-initials" aria-hidden="true">
-              {p.house
-                .split(" ")
-                .map((w) => w[0])
-                .join("")}
-            </span>
-          )}
-        </span>
-        <span className="sim-text">
-          <strong>{p.name}</strong>
-          <span>{p.house}</span>
-          <span className="sim-price">
-            {lempiras(p.price)}
-            {saving > 0 && <em>{t.save(lempiras(saving))}</em>}
-          </span>
-          {p.inspiredBy && <span className="sim-trade">{p.inspiredBy.tradeoff[lang]}</span>}
-        </span>
-      </Link>
-    </li>
-  );
-}
-
-/** Full comparison below the notes, grouped by how closely each one follows the original. */
+/** Below the notes: the original, then every alternative grouped by how closely it follows it. */
 export function Similar({ product: p, lang }: { product: Product; lang: Lang }) {
   const t = T[lang];
   const original = p.inspiredBy ? product(p.inspiredBy.handle) : undefined;
@@ -116,20 +99,16 @@ export function Similar({ product: p, lang }: { product: Product; lang: Lang }) 
       {original && (
         <div className="sim-tier">
           <h3>{t.original}</h3>
-          <ul className="sim-list">
-            <Card p={original} lang={lang} />
-          </ul>
+          <Row p={original} lang={lang} />
         </div>
       )}
       {byLevel(alts).map(({ level, items }) => (
         <div key={level} className="sim-tier">
           <h3>{LEVELS[level].name[lang]}</h3>
           <p className="sim-meaning">{LEVELS[level].meaning[lang]}</p>
-          <ul className="sim-list">
-            {items.map((a) => (
-              <Card key={a.handle} p={a} lang={lang} vs={root} />
-            ))}
-          </ul>
+          {items.map((a) => (
+            <Row key={a.handle} p={a} lang={lang} saving={root.price - a.price} note={a.inspiredBy!.tradeoff[lang]} />
+          ))}
         </div>
       ))}
     </section>

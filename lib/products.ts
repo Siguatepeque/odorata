@@ -88,6 +88,7 @@ export const PRODUCTS: Product[] = [
     year: 2023,
     price: 9950,
     stock: 2,
+    photo: { src: "/products/althair.png", w: 476, h: 986 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
       image: "/products/cinnamon-plate.jpg",
@@ -100,8 +101,8 @@ export const PRODUCTS: Product[] = [
       base: [["praline", 3], ["almizcle", 2], ["ambroxan", 2], ["guayaco", 2]],
     },
     about: {
-      es: "Canela y cardamomo sobre vainilla bourbon y praliné, con maderas secas al fondo. Cálido, refinado y muy cremoso.",
-      en: "Cinnamon and cardamom over bourbon vanilla and praline, with dry woods underneath. Warm, refined and very creamy.",
+      es: "Abre con canela y cardamomo tibios, con un brillo de azahar y bergamota. En el corazón, vainilla bourbon cremosa y un toque resinoso de elemí. Termina en praliné, almizcle y maderas secas: cálido, pulido y con mucha presencia, sin volverse empalagoso.",
+      en: "It opens with warm cinnamon and cardamom, brightened by orange blossom and bergamot. At the heart, creamy bourbon vanilla and a resinous touch of elemi. It settles into praline, musk and dry woods: warm, polished and full of presence without turning cloying.",
     },
     facts: [
       { label: { es: "Para", en: "For" }, value: { es: "Hombre o mujer", en: "Anyone" } },
@@ -132,8 +133,8 @@ export const PRODUCTS: Product[] = [
       base: [["guayaco", 3], ["almizcle", 2]],
     },
     about: {
-      es: "La misma vainilla especiada, pero más seca y amaderada. Menos postre, más whisky.",
-      en: "The same spiced vanilla, drier and woodier. Less dessert, more whisky.",
+      es: "Abre seco y especiado: cardamomo con un toque de canela. La vainilla bourbon llega suave, sin azúcar, y un fondo de madera de guayaco y almizcle lo vuelve ahumado y adulto. Para quien quiere calidez sin dulzor.",
+      en: "It opens dry and spiced: cardamom with a touch of cinnamon. Bourbon vanilla arrives soft and unsweetened, and a base of guaiac wood and musk makes it smoky and grown-up. For anyone who wants warmth without sweetness.",
     },
     facts: [
       { label: { es: "Para", en: "For" }, value: { es: "Hombre o mujer", en: "Anyone" } },
@@ -168,8 +169,8 @@ export const PRODUCTS: Product[] = [
       base: [["ambroxan", 3]],
     },
     about: {
-      es: "Canela luminosa sobre ámbar limpio. Ligero, para el día.",
-      en: "Bright cinnamon over clean amber. Light, for daytime.",
+      es: "Canela luminosa con un brillo cítrico de bergamota, sobre un corazón ligero de azahar. El fondo de ámbar gris es limpio y casi mineral. Cálido pero aireado: funciona de día y con calor.",
+      en: "Bright cinnamon with a citrus flash of bergamot over a light orange-blossom heart. The ambergris base is clean, almost mineral. Warm but airy: it works in daytime and in the heat.",
     },
     facts: [
       { label: { es: "Para", en: "For" }, value: { es: "Hombre o mujer", en: "Anyone" } },

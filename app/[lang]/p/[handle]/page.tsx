@@ -6,6 +6,7 @@ import AccordStage from "@/components/AccordStage";
 import FitText from "@/components/FitText";
 import BuyBox from "@/components/BuyBox";
 import PreviewSwitch from "@/components/PreviewSwitch";
+import { AltWidget, Similar } from "@/components/Alternatives";
 
 export const generateStaticParams = () => LANGS.flatMap((lang) => PRODUCTS.map((p) => ({ lang, handle: p.handle })));
 
@@ -53,7 +54,9 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/p/[hand
       />
 
       <div className="pdp-body">
-        <BuyBox product={p} lang={lang} />
+        <BuyBox product={p} lang={lang}>
+          <AltWidget product={p} lang={lang} />
+        </BuyBox>
 
         <div className="pdp-info">
           <section aria-labelledby="about-h">
@@ -87,6 +90,8 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/p/[hand
               ))}
             </div>
           </section>
+
+          <Similar product={p} lang={lang} />
 
           <section className="details-table" aria-labelledby="details-h">
             <h2 id="details-h" className="label">

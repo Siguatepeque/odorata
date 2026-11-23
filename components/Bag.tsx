@@ -80,7 +80,7 @@ export function BagSheet({ lang }: { lang: Lang }) {
                   return (
                     <li key={l.handle}>
                       {/* eslint-disable-next-line @next/next/no-img-element -- small cut-out thumbnail */}
-                      <img src={p.photo.src} alt="" width={36} height={100} />
+                      {p.photo ? <img src={p.photo.src} alt="" width={36} height={100} /> : <span className="thumb-empty" />}
                       <div className="line-text">
                         <strong>{p.name}</strong>
                         <span>

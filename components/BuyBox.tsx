@@ -9,7 +9,7 @@ import { Qty, openBag } from "./Bag";
 
 // Price, quantity and the one action. On phones a slim bar keeps the action in reach
 // once the main button scrolls away.
-export default function BuyBox({ product: p, lang }: { product: Product; lang: Lang }) {
+export default function BuyBox({ product: p, lang, children }: { product: Product; lang: Lang; children?: React.ReactNode }) {
   const t = dict(lang);
   const bag = useBag();
   const inBag = bag.find((l) => l.handle === p.handle)?.qty ?? 0;
@@ -40,6 +40,7 @@ export default function BuyBox({ product: p, lang }: { product: Product; lang: L
         {t.priceNote} {t.delivery(lempiras(DELIVERY.city.fee))}
       </p>
       <p className={p.stock ? "buy-stock" : "buy-stock out"}>{p.stock ? t.left(p.stock) : t.soldOut}</p>
+      {children}
 
       <div className="buy-row">
         <Qty value={q} max={Math.max(1, room)} onChange={setQty} label={t.qty} lang={lang} />

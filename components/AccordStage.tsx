@@ -153,15 +153,19 @@ export default function AccordStage({ product: p, lang, priority = false, top }:
   return (
     <figure className="stage">
       <div ref={host} className="stage-field" style={{ "--still": `url(${p.accord.image})` } as React.CSSProperties} />
-      {/* eslint-disable-next-line @next/next/no-img-element -- transparent cut-out at its natural size */}
-      <img
-        className="stage-bottle"
-        src={p.photo.src}
-        width={p.photo.w}
-        height={p.photo.h}
-        alt={`${p.name}, ${p.house}, ${p.type[lang]} ${p.ml} ml`}
-        fetchPriority={priority ? "high" : undefined}
-      />
+      {p.photo ? (
+        // eslint-disable-next-line @next/next/no-img-element -- transparent cut-out at its natural size
+        <img
+          className="stage-bottle"
+          src={p.photo.src}
+          width={p.photo.w}
+          height={p.photo.h}
+          alt={`${p.name}, ${p.house}, ${p.type[lang]} ${p.ml} ml`}
+          fetchPriority={priority ? "high" : undefined}
+        />
+      ) : (
+        <p className="stage-nophoto">{lang === "es" ? "Foto del producto pendiente" : "Product photo pending"}</p>
+      )}
       <a className="stage-notes" href="#notas">
         <span>
           <span className="stage-tier">{t.stage.top}</span>

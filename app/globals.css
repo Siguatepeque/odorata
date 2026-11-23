@@ -1020,6 +1020,208 @@ ol {
   display: block;
 }
 
+/* ---------- Alternatives: the small block under the price, and the full comparison ---------- */
+
+.alt {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hair);
+}
+
+.alt-title {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-2);
+}
+
+/* A row is a link, so it ends in the outlined arrow, our sign for "you can press this". */
+.alt-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-template-areas:
+    "level price arrow"
+    "name price arrow";
+  align-items: center;
+  gap: 2px 14px;
+  padding: 10px 0;
+  text-decoration: none;
+  border-bottom: 1px solid var(--hair);
+}
+
+.alt-level {
+  grid-area: level;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.alt-name {
+  grid-area: name;
+  font-size: 15px;
+}
+
+.alt-name strong {
+  font-weight: 800;
+}
+
+.alt-price {
+  grid-area: price;
+  display: grid;
+  justify-items: end;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.alt-price em,
+.sim-price em {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ok, #1f6b3a);
+}
+
+.alt-row .notes-arrow {
+  grid-area: arrow;
+}
+
+.alt-row:hover .notes-arrow {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.alt-trade {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.alt-trade strong {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.alt-trade em {
+  font-style: normal;
+  font-weight: 600;
+  color: #1f6b3a;
+}
+
+.alt-more {
+  justify-self: start;
+  font-size: 14px;
+}
+
+#parecidos {
+  scroll-margin-top: 84px;
+}
+
+.sim-tier {
+  padding-top: 18px;
+}
+
+.sim-tier h3 {
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.sim-meaning {
+  font-size: 14px;
+  color: var(--ink-2);
+  margin-top: 2px;
+}
+
+.sim-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.sim-card {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 14px;
+  align-items: start;
+  text-decoration: none;
+  padding: 10px;
+  background: #f6f5f3;
+  transition: background-color 160ms;
+}
+
+.sim-card:hover {
+  background: #eeece8;
+}
+
+.sim-tile {
+  height: 96px;
+  display: grid;
+  place-items: center;
+  background: var(--paper);
+}
+
+.sim-tile img {
+  height: 88px;
+  width: auto;
+}
+
+.sim-initials {
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: var(--ink-2);
+}
+
+.sim-text {
+  display: grid;
+  gap: 2px;
+  font-size: 14px;
+}
+
+.sim-text strong {
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.sim-price {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+.sim-trade {
+  color: var(--ink-2);
+  margin-top: 2px;
+}
+
+.stage-nophoto {
+  position: absolute;
+  left: 30%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 18px 22px;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgb(255 255 255 / 0.7);
+}
+
+.thumb-empty {
+  display: block;
+  width: 36px;
+  height: 100px;
+  background: #f2f1ef;
+}
+
 /* ---------- Bag sheet ---------- */
 
 .sheet {

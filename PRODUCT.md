@@ -25,7 +25,7 @@ A curator, not a brand: the store frames many houses (designer, niche, and "insp
 ## Capabilities and Constraints
 
 - Front-end mock: home, collection, product page, bag, multi-step checkout UI (contact, delivery, payment choice, review, confirmation). No real payments or orders; Shopify connects later.
-- Language follows the device: Spanish (Honduras) is the default and primary; English when the browser prefers English. Prices in Lempiras (L).
+- Spanish (Honduras) is the default: the site always opens in /es. English is available from the footer. Prices in Lempiras (L).
 - Payment options shown should match local habits (cash on delivery, bank transfer, card); delivery explained in plain terms.
 - Mobile-first, accessible (keyboard, screen reader, reduced motion), performant.
 

@@ -16,6 +16,7 @@ export type Product = {
   year: number;
   price: number; // Lempiras, taxes included
   stock: number;
+  gender: Gender;
   photo?: { src: string; w: number; h: number }; // cut-out, transparent PNG; originals we only name have none
   accord: { note: Text; image: string; also: Text; focus: { x: number; y: number; zoom: number } }; // the top note given the glyph treatment; focus frames it (0-1, zoom 1 = cover)
   /** [note id, prominence]: 3 = leads the scent, 2 = supporting, 1 = barely there. */
@@ -24,6 +25,24 @@ export type Product = {
   facts: { label: Text; value: Text }[];
   /** An alternative points at the perfume it follows, how closely, and what it trades. */
   inspiredBy?: { handle: string; level: Level; tradeoff: Text };
+};
+
+export type Gender = "men" | "women" | "unisex";
+export const GENDERS: Record<Gender, Text> = {
+  men: { es: "Hombre", en: "Men" },
+  women: { es: "Mujer", en: "Women" },
+  unisex: { es: "Unisex", en: "Unisex" },
+};
+
+/** Scent families in plain words, the way big retailers group them. A perfume's families come from its leading notes. */
+export type Family = "sweet" | "spicy" | "woody" | "amber" | "floral" | "fresh";
+export const FAMILIES: Record<Family, { name: Text; hint: Text }> = {
+  sweet: { name: { es: "Dulce", en: "Sweet" }, hint: { es: "Vainilla, praliné, tonka", en: "Vanilla, praline, tonka" } },
+  spicy: { name: { es: "Especiado", en: "Spicy" }, hint: { es: "Canela, cardamomo", en: "Cinnamon, cardamom" } },
+  woody: { name: { es: "Amaderado", en: "Woody" }, hint: { es: "Cedro, guayaco, maderas", en: "Cedar, guaiac, woods" } },
+  amber: { name: { es: "Ámbar y almizcle", en: "Amber and musk" }, hint: { es: "Ámbar, almizcle, olíbano", en: "Amber, musk, frankincense" } },
+  floral: { name: { es: "Floral", en: "Floral" }, hint: { es: "Rosa, azahar", en: "Rose, orange blossom" } },
+  fresh: { name: { es: "Fresco y frutal", en: "Fresh and fruity" }, hint: { es: "Bergamota, mandarina, manzana", en: "Bergamot, mandarin, apple" } },
 };
 
 export type Level = "closest" | "dna" | "vibe";
@@ -53,6 +72,7 @@ export const PRODUCTS: Product[] = [
     year: 2024,
     price: 2450,
     stock: 6,
+    gender: "unisex",
     photo: { src: `${BASE}/products/liquid-brun.png`, w: 356, h: 981 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
@@ -70,7 +90,6 @@ export const PRODUCTS: Product[] = [
       en: "It opens warm: cinnamon and cardamom, lifted by a little orange blossom and bergamot. Then comes bourbon vanilla, soft and creamy, and it settles into praline and woods that stay close to the skin. Sweet, but never childish.",
     },
     facts: [
-      { label: { es: "Para", en: "For" }, value: { es: "Hombre o mujer", en: "Anyone" } },
       { label: { es: "Cuándo", en: "When" }, value: { es: "Noche, clima fresco", en: "Evenings, cool weather" } },
       { label: { es: "Carácter", en: "Character" }, value: { es: "Dulce, especiado, cálido", en: "Sweet, spiced, warm" } },
       { label: { es: "Concentración", en: "Concentration" }, value: { es: "Eau de Parfum: dura varias horas", en: "Eau de Parfum: lasts several hours" } },
@@ -91,6 +110,7 @@ export const PRODUCTS: Product[] = [
     year: 2023,
     price: 9950,
     stock: 2,
+    gender: "unisex",
     photo: { src: `${BASE}/products/althair.png`, w: 476, h: 986 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
@@ -108,7 +128,6 @@ export const PRODUCTS: Product[] = [
       en: "It opens with warm cinnamon and cardamom, brightened by orange blossom and bergamot. At the heart, creamy bourbon vanilla and a resinous touch of elemi. It settles into praline, musk and dry woods: warm, polished and full of presence without turning cloying.",
     },
     facts: [
-      { label: { es: "Para", en: "For" }, value: { es: "Hombre o mujer", en: "Anyone" } },
       { label: { es: "Cuándo", en: "When" }, value: { es: "Noche, clima fresco", en: "Evenings, cool weather" } },
       { label: { es: "Carácter", en: "Character" }, value: { es: "Dulce, especiado, cálido", en: "Sweet, spiced, warm" } },
       { label: { es: "Concentración", en: "Concentration" }, value: { es: "Eau de Parfum: dura varias horas", en: "Eau de Parfum: lasts several hours" } },
@@ -125,6 +144,7 @@ export const PRODUCTS: Product[] = [
     year: 2024,
     price: 2250,
     stock: 4,
+    gender: "unisex",
     photo: { src: `${BASE}/products/monarque.png`, w: 239, h: 471 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
@@ -142,7 +162,6 @@ export const PRODUCTS: Product[] = [
       en: "It opens with cinnamon, cardamom and orange blossom, with a touch of bergamot. At the heart, vanilla and the resinous air of elemi. It settles into candied almond, praline, tonka and woods: sweet, spiced and enveloping.",
     },
     facts: [
-      { label: { es: "Para", en: "For" }, value: { es: "Hombre o mujer", en: "Anyone" } },
       { label: { es: "Cuándo", en: "When" }, value: { es: "Noche, clima fresco", en: "Evenings, cool weather" } },
       { label: { es: "Carácter", en: "Character" }, value: { es: "Dulce, especiado, cálido", en: "Sweet, spiced, warm" } },
       { label: { es: "Concentración", en: "Concentration" }, value: { es: "Eau de Parfum: dura varias horas", en: "Eau de Parfum: lasts several hours" } },
@@ -162,6 +181,7 @@ export const PRODUCTS: Product[] = [
     year: 2025,
     price: 1450,
     stock: 7,
+    gender: "men",
     photo: { src: `${BASE}/products/island-vanilla-dunes.png`, w: 272, h: 600 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
@@ -180,7 +200,6 @@ export const PRODUCTS: Product[] = [
       en: "It opens spiced: cinnamon and cardamom with a flash of bergamot. The heart brings orange blossom, bourbon vanilla and guaiac wood. Amber, praline and musk leave it creamy and warm. Made for evenings and cool days.",
     },
     facts: [
-      { label: { es: "Para", en: "For" }, value: { es: "Hombre", en: "Men" } },
       { label: { es: "Cuándo", en: "When" }, value: { es: "Noche, clima fresco", en: "Evenings, cool weather" } },
       { label: { es: "Carácter", en: "Character" }, value: { es: "Especiado, cremoso, dulce", en: "Spiced, creamy, sweet" } },
       { label: { es: "Concentración", en: "Concentration" }, value: { es: "Extrait de Parfum: la más intensa", en: "Extrait de Parfum: the most concentrated" } },
@@ -200,6 +219,7 @@ export const PRODUCTS: Product[] = [
     year: 2025,
     price: 1650,
     stock: 5,
+    gender: "unisex",
     photo: { src: `${BASE}/products/historic-sahara.png`, w: 266, h: 600 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
@@ -217,7 +237,6 @@ export const PRODUCTS: Product[] = [
       en: "It opens with bergamot, cinnamon and cardamom. Then resinous elemi wraps into vanilla and a little sugar. It settles into almond, tonka, praline and woods, with musk and ambroxan: warm, confident and elegant.",
     },
     facts: [
-      { label: { es: "Para", en: "For" }, value: { es: "Hombre o mujer", en: "Anyone" } },
       { label: { es: "Cuándo", en: "When" }, value: { es: "Noche, otoño e invierno", en: "Evenings, autumn and winter" } },
       { label: { es: "Carácter", en: "Character" }, value: { es: "Dulce, especiado, almendrado", en: "Sweet, spiced, almondy" } },
       { label: { es: "Concentración", en: "Concentration" }, value: { es: "Extrait de Parfum: la más intensa", en: "Extrait de Parfum: the most concentrated" } },
@@ -237,6 +256,7 @@ export const PRODUCTS: Product[] = [
     year: 2024,
     price: 1250,
     stock: 9,
+    gender: "unisex",
     photo: { src: `${BASE}/products/art-of-nature-ii.png`, w: 320, h: 600 },
     accord: {
       note: { es: "Manzana", en: "Apple" },
@@ -254,7 +274,6 @@ export const PRODUCTS: Product[] = [
       en: "It opens fresh and fruity: apple, mandarin and bergamot, with a smoky thread of frankincense. It softens into orange blossom, rose and cardamom, then settles into vanilla, cedar and guaiac woods, ambroxan and musk. Warm, but bright.",
     },
     facts: [
-      { label: { es: "Para", en: "For" }, value: { es: "Hombre o mujer", en: "Anyone" } },
       { label: { es: "Cuándo", en: "When" }, value: { es: "Diario y ocasiones especiales", en: "Everyday and special occasions" } },
       { label: { es: "Carácter", en: "Character" }, value: { es: "Frutal, amaderado, cálido", en: "Fruity, woody, warm" } },
       { label: { es: "Concentración", en: "Concentration" }, value: { es: "Eau de Parfum: dura varias horas", en: "Eau de Parfum: lasts several hours" } },
@@ -268,28 +287,45 @@ export const PRODUCTS: Product[] = [
 ];
 
 // Every note with its picture. Molecules (ambroxan, musk) are drawn, since they are made in a lab.
-export const NOTES: Record<string, { name: Text; img: string }> = {
-  canela: { name: { es: "Canela", en: "Cinnamon" }, img: `${BASE}/notes/ingredients/canela.jpg` },
-  azahar: { name: { es: "Azahar", en: "Orange blossom" }, img: `${BASE}/notes/ingredients/azahar.jpg` },
-  cardamomo: { name: { es: "Cardamomo", en: "Cardamom" }, img: `${BASE}/notes/ingredients/cardamomo.jpg` },
-  bergamota: { name: { es: "Bergamota", en: "Bergamot" }, img: `${BASE}/notes/ingredients/bergamota.jpg` },
-  vainilla: { name: { es: "Vainilla", en: "Vanilla" }, img: `${BASE}/notes/ingredients/vainilla.jpg` },
-  elemi: { name: { es: "Elemí", en: "Elemi" }, img: `${BASE}/notes/ingredients/elemi.jpg` },
-  praline: { name: { es: "Praliné", en: "Praline" }, img: `${BASE}/notes/ingredients/praline.jpg` },
-  ambroxan: { name: { es: "Ámbar gris", en: "Ambroxan" }, img: `${BASE}/notes/ingredients/ambroxan.jpg` },
-  almizcle: { name: { es: "Almizcle", en: "Musk" }, img: `${BASE}/notes/ingredients/almizcle.jpg` },
-  guayaco: { name: { es: "Madera de guayaco", en: "Guaiac wood" }, img: `${BASE}/notes/ingredients/guayaco.jpg` },
-  almendra: { name: { es: "Almendra", en: "Almond" }, img: `${BASE}/notes/ingredients/almendra.jpg` },
-  tonka: { name: { es: "Haba tonka", en: "Tonka bean" }, img: `${BASE}/notes/ingredients/tonka.jpg` },
-  ambar: { name: { es: "Ámbar", en: "Amber" }, img: `${BASE}/notes/ingredients/ambar.jpg` },
-  azucar: { name: { es: "Azúcar", en: "Sugar" }, img: `${BASE}/notes/ingredients/azucar.jpg` },
-  madera: { name: { es: "Maderas", en: "Woods" }, img: `${BASE}/notes/ingredients/madera.jpg` },
-  manzana: { name: { es: "Manzana", en: "Apple" }, img: `${BASE}/notes/ingredients/manzana.jpg` },
-  mandarina: { name: { es: "Mandarina", en: "Mandarin" }, img: `${BASE}/notes/ingredients/mandarina.jpg` },
-  olibano: { name: { es: "Olíbano", en: "Frankincense" }, img: `${BASE}/notes/ingredients/olibano.jpg` },
-  rosa: { name: { es: "Rosa", en: "Rose" }, img: `${BASE}/notes/ingredients/rosa.jpg` },
-  cedro: { name: { es: "Cedro", en: "Cedar" }, img: `${BASE}/notes/ingredients/cedro.jpg` },
+export const NOTES: Record<string, { name: Text; img: string; family: Family }> = {
+  canela: { name: { es: "Canela", en: "Cinnamon" }, img: `${BASE}/notes/ingredients/canela.jpg`, family: "spicy" },
+  azahar: { name: { es: "Azahar", en: "Orange blossom" }, img: `${BASE}/notes/ingredients/azahar.jpg`, family: "floral" },
+  cardamomo: { name: { es: "Cardamomo", en: "Cardamom" }, img: `${BASE}/notes/ingredients/cardamomo.jpg`, family: "spicy" },
+  bergamota: { name: { es: "Bergamota", en: "Bergamot" }, img: `${BASE}/notes/ingredients/bergamota.jpg`, family: "fresh" },
+  vainilla: { name: { es: "Vainilla", en: "Vanilla" }, img: `${BASE}/notes/ingredients/vainilla.jpg`, family: "sweet" },
+  elemi: { name: { es: "Elemí", en: "Elemi" }, img: `${BASE}/notes/ingredients/elemi.jpg`, family: "amber" },
+  praline: { name: { es: "Praliné", en: "Praline" }, img: `${BASE}/notes/ingredients/praline.jpg`, family: "sweet" },
+  ambroxan: { name: { es: "Ámbar gris", en: "Ambroxan" }, img: `${BASE}/notes/ingredients/ambroxan.jpg`, family: "amber" },
+  almizcle: { name: { es: "Almizcle", en: "Musk" }, img: `${BASE}/notes/ingredients/almizcle.jpg`, family: "amber" },
+  guayaco: { name: { es: "Madera de guayaco", en: "Guaiac wood" }, img: `${BASE}/notes/ingredients/guayaco.jpg`, family: "woody" },
+  almendra: { name: { es: "Almendra", en: "Almond" }, img: `${BASE}/notes/ingredients/almendra.jpg`, family: "sweet" },
+  tonka: { name: { es: "Haba tonka", en: "Tonka bean" }, img: `${BASE}/notes/ingredients/tonka.jpg`, family: "sweet" },
+  ambar: { name: { es: "Ámbar", en: "Amber" }, img: `${BASE}/notes/ingredients/ambar.jpg`, family: "amber" },
+  azucar: { name: { es: "Azúcar", en: "Sugar" }, img: `${BASE}/notes/ingredients/azucar.jpg`, family: "sweet" },
+  madera: { name: { es: "Maderas", en: "Woods" }, img: `${BASE}/notes/ingredients/madera.jpg`, family: "woody" },
+  manzana: { name: { es: "Manzana", en: "Apple" }, img: `${BASE}/notes/ingredients/manzana.jpg`, family: "fresh" },
+  mandarina: { name: { es: "Mandarina", en: "Mandarin" }, img: `${BASE}/notes/ingredients/mandarina.jpg`, family: "fresh" },
+  olibano: { name: { es: "Olíbano", en: "Frankincense" }, img: `${BASE}/notes/ingredients/olibano.jpg`, family: "amber" },
+  rosa: { name: { es: "Rosa", en: "Rose" }, img: `${BASE}/notes/ingredients/rosa.jpg`, family: "floral" },
+  cedro: { name: { es: "Cedro", en: "Cedar" }, img: `${BASE}/notes/ingredients/cedro.jpg`, family: "woody" },
 };
+
+export const notesOf = (p: Product) => [...new Set((["top", "heart", "base"] as const).flatMap((t) => p.pyramid[t].map(([id]) => id)))];
+/**
+ * Families of the notes that lead the scent (prominence 3). When a house publishes no leading notes,
+ * the family (or tied families) with the most notes stands in.
+ */
+export const familiesOf = (p: Product): Family[] => {
+  const all = (["top", "heart", "base"] as const).flatMap((t) => p.pyramid[t]).filter(([id]) => NOTES[id]);
+  const leads = all.filter(([, lvl]) => lvl === 3);
+  if (leads.length) return [...new Set(leads.map(([id]) => NOTES[id].family))];
+  const tally = all.reduce<Partial<Record<Family, number>>>((acc, [id]) => ((acc[NOTES[id].family] = (acc[NOTES[id].family] ?? 0) + 1), acc), {});
+  const top = Math.max(...Object.values(tally));
+  return (Object.keys(tally) as Family[]).filter((f) => tally[f] === top);
+};
+
+/** Facts as shown, with who it's for first. */
+export const factsOf = (p: Product) => [{ label: { es: "Para", en: "For" }, value: GENDERS[p.gender] }, ...p.facts];
 
 export const product = (handle: string) => PRODUCTS.find((p) => p.handle === handle);
 

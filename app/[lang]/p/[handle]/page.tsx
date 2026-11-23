@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { dict, LANGS } from "@/lib/i18n";
-import { NOTES, PRODUCTS, product, type Lang } from "@/lib/products";
+import { NOTES, PRODUCTS, factsOf, product, type Lang } from "@/lib/products";
 import AccordStage from "@/components/AccordStage";
 import FitText from "@/components/FitText";
 import BuyBox from "@/components/BuyBox";
@@ -23,7 +23,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/p/[hand
   const t = dict(lang);
   const specs = (variant: string) => (
     <dl className={`specs ${variant}`}>
-      {p.facts.slice(0, 3).map((f) => (
+      {factsOf(p).slice(0, 3).map((f) => (
         <div key={f.label.es}>
           <dt>{f.label[lang]}</dt>
           <dd>{f.value[lang]}</dd>
@@ -98,7 +98,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/p/[hand
               {t.details}
             </h2>
             <dl className="rows">
-              {p.facts.map((f) => (
+              {factsOf(p).map((f) => (
                 <div key={f.label.es}>
                   <dt>{f.label[lang]}</dt>
                   <dd>{f.value[lang]}</dd>

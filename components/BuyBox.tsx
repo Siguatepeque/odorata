@@ -97,7 +97,7 @@ export function QuickAdd({ product: p, lang }: { product: Product; lang: Lang })
           openBag();
         }}
       >
-        {p.stock ? `${t.add} · ${lempiras(p.price)}` : t.soldOut}
+        {p.stock ? t.add : t.soldOut}
       </button>
       <span role="status" className="sr-only">
         {done ? `${t.added}: ${p.name}` : ""}

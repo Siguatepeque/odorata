@@ -167,8 +167,10 @@ export default function AccordStage({ product: p, lang, priority = false }: { pr
         <strong>{p.accord.note[lang]}</strong>
         <span>{p.accord.also[lang]}</span>
       </figcaption>
-      <button type="button" className="stage-toggle" aria-pressed={!playing} onClick={() => setPicked(!playing)}>
-        {playing ? t.stage.pause : t.stage.play}
+      <button type="button" className="stage-toggle" aria-label={playing ? t.stage.pause : t.stage.play} title={playing ? t.stage.pause : t.stage.play} onClick={() => setPicked(!playing)}>
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          {playing ? <path d="M4 2.5h2.6v11H4zM9.4 2.5H12v11H9.4z" /> : <path d="M4.5 2.2 13.5 8l-9 5.8z" />}
+        </svg>
       </button>
     </figure>
   );

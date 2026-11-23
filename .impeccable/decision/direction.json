@@ -1,0 +1,132 @@
+{
+  "title": "Choose the visual world",
+  "question": "Your brief pins the world (manuscripts, botanical archives, tactile paper, warm neutrals). The roll chose which form of that world to build: The Formulary. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "The Formulary",
+      "kicker": "THE ROLL",
+      "lineage": "19th-century pharmacopoeias and dispensatories: thumb-indexed, rubricated, annotated in the margins",
+      "thesis": "The store is a reference book: every product is a numbered entry, and every skin concern is a thumb-tab on the fore-edge.",
+      "palette": ["#ECE5D3", "#1D1A15", "#A3301C", "#2E3B2C"],
+      "materials": ["toned India paper", "green bookcloth", "red rubrication", "die-cut thumb index"],
+      "viewport": "An open spread with a running head. The lead entry is rubricated and has a working Add to bag. Concern tabs run down the right edge.",
+      "risk": "If the book metaphor goes beyond its navigation it turns into a costume; the tabs and entries have to do real shopping work.",
+      "raised": [
+        { "from": "challenger-splitflap", "raise": "Entries sit on a fixed ledger grid; price and stock change in place without reflowing the row." },
+        { "from": "challenger-zine", "raise": "Each margin note draws a ruled leader to the one ingredient line that matters." },
+        { "from": "challenger-teletext", "raise": "Every product has an entry number that is also its address (No. 041 → /entry/041)." },
+        { "from": "challenger-kiosk", "raise": "Only three inks: ink, rubric and bookcloth. Out of stock prints as an empty ruled box." },
+        { "from": "challenger-multiplane", "raise": "Product plates are tipped in on their own plane and lift a millimetre toward the cursor." },
+        { "from": "challenger-understory", "raise": "Margin notes ink in as the pointer approaches their entry." }
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Herbarium Sheet",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "museum herbarium sheets with collector’s labels and linen strapping",
+      "thesis": "Each product is mounted like a pressed specimen, with its collector’s label.",
+      "palette": ["#E9E2CF", "#25231D", "#5B6B3A", "#B49A6A"],
+      "materials": ["rag mount board", "linen strapping tape", "typed accession labels"],
+      "viewport": "One large mounted sheet: the hero product strapped to the board, with an accession label (name, brand, price, add to bag) in the bottom right.",
+      "risk": "This is the literal reading of the brief and where most runs land. It also shows only one product at a time, which slows browsing."
+    },
+    {
+      "id": "challenger-splitflap",
+      "label": "Split-flap Concourse",
+      "verdict": "declined",
+      "lineage": "rail departure boards",
+      "thesis": "The catalogue as a departure board, with restocks and new arrivals flipping in.",
+      "palette": ["#111111", "#F2F2F2", "#E8A53A", "#8C2A22"],
+      "materials": ["matte flap faces", "brushed steel"],
+      "viewport": "A board of product rows: brand, product, size, price, status.",
+      "risk": "Transit urgency fights the slow, considered register the brief asks for.",
+      "case": "It fuses mechanically but shoppers don't see skincare as departures, and it loses the botanical archive entirely.",
+      "kept": "Rows keep a fixed grid, so state changes never reflow the page.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-split-flap-concourse-hero.webp"
+    },
+    {
+      "id": "challenger-zine",
+      "label": "Hand-drawn Zine",
+      "verdict": "declined",
+      "lineage": "marker-drawn explainer zines",
+      "thesis": "Skincare routines taught in a doodled comic.",
+      "palette": ["#F4EEDC", "#111111", "#F5D84A", "#E77BA6"],
+      "materials": ["marker ink", "highlighter"],
+      "viewport": "A doodled routine diagram with arrows to each product.",
+      "risk": "Too playful for a premium multi-brand retailer.",
+      "case": "Clear on routines but off-register for a premium retailer.",
+      "kept": "Annotation that points: each note leads to the line that matters.",
+      "hero": "https://impeccable.style/worlds/cards/hand-drawn-zine-explainer-hero.webp"
+    },
+    {
+      "id": "challenger-teletext",
+      "label": "Teletext Pages",
+      "verdict": "declined",
+      "lineage": "broadcast teletext",
+      "thesis": "Products addressed by page number.",
+      "palette": ["#000000", "#FFFF00", "#00C0C0", "#FFFFFF"],
+      "materials": ["block mosaic", "fixed character cell"],
+      "viewport": "A P100 index of brands with product page numbers.",
+      "risk": "Retro novelty; no warmth or tactility.",
+      "case": "It works as an addressing system but can't carry the paper and botanical world.",
+      "kept": "Numbered addressing: each product has a number that is also its URL.",
+      "hero": "https://impeccable.style/worlds/cards/digital-design-canon-teletext-weather-mosaic-hero.webp"
+    },
+    {
+      "id": "challenger-kiosk",
+      "label": "Kiosk Print",
+      "verdict": "declined",
+      "lineage": "state-printed everyday packaging",
+      "thesis": "Every brand reprinted in one office’s three inks.",
+      "palette": ["#B8B3A7", "#1E1E1E", "#C23B22", "#2F5D8A"],
+      "materials": ["gray recycled board", "off-register ink"],
+      "viewport": "A kiosk grid of product cells, each with one abstract mark.",
+      "risk": "Overwrites the brands' own packaging, which breaks the neutral-host principle.",
+      "case": "It would erase the brands it should frame.",
+      "kept": "A restricted ink set, and out-of-stock shown as an empty ruled box.",
+      "hero": "https://impeccable.style/worlds/cards/vernacular-ephemera-socialist-kiosk-print-hero.webp"
+    },
+    {
+      "id": "challenger-multiplane",
+      "label": "Multiplane Dawn",
+      "verdict": "declined",
+      "lineage": "multiplane cel animation",
+      "thesis": "A painted forest you scroll down through, layer by layer.",
+      "palette": ["#2C2418", "#3F5A3A", "#9FB0B4", "#E9A845"],
+      "materials": ["gouache planes", "mist"],
+      "viewport": "Layered painted forest with products on the nearest cel.",
+      "risk": "Spectacle over shopping, with heavy asset needs.",
+      "case": "Atmospheric, but products get lost inside the painting.",
+      "kept": "Real depth planes: images and text move on separate layers.",
+      "hero": "https://impeccable.style/worlds/cards/cinema-cinematography-editing-multiplane-cel-dawn-hero.webp"
+    },
+    {
+      "id": "challenger-understory",
+      "label": "Luminous Understory",
+      "verdict": "declined",
+      "lineage": "speculative bioluminescent botany",
+      "thesis": "Botany reinvented as light that responds to attention.",
+      "palette": ["#0C0F0C", "#6FE3E0", "#B7A1F0", "#C9F2B0"],
+      "materials": ["spore glow", "root veins"],
+      "viewport": "A dark understory where products glow as the pointer nears them.",
+      "risk": "Dark neon breaks the warm-neutral brief.",
+      "case": "It contradicts the pinned warm neutrals.",
+      "kept": "Proximity as attention: elements wake as the pointer approaches.",
+      "hero": "https://impeccable.style/worlds/cards/dream-surreal-impossible-worlds-luminescent-alien-understory-hero.webp"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code" },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "The premium skincare storefront, executed impeccably.",
+    "palette": ["#F7F5F2", "#1A1A1A", "#C8B8A6"],
+    "materials": ["clean grid", "lifestyle photography"],
+    "viewport": "A full-bleed lifestyle hero, then a shop-by-category row and a bestsellers grid.",
+    "risk": "Indistinguishable from the competition by design."
+  },
+  "steer": true
+}

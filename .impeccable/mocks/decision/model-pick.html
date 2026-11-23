@@ -1,0 +1,59 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=390">
+<style>
+*{box-sizing:border-box;margin:0}body{width:390px;height:844px;overflow:hidden;background:#fff;font-family:ui-sans-serif,system-ui,sans-serif;color:#141312}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid #1413122a}
+.logo{font:600 24px/1 ui-sans-serif;letter-spacing:-.02em}
+nav{display:flex;gap:16px;font:500 15px/1 ui-sans-serif}nav span{text-decoration:underline;text-underline-offset:5px}
+.field{height:404px}.field canvas{width:100%;height:100%;display:block}
+.chord{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #141312;border-bottom:1px solid #1413122a}
+.chord div{padding:10px 12px}.chord div+div{border-left:1px solid #1413122a}
+.k{font:500 11px/1.3 ui-monospace,monospace;opacity:.6}.v{font:600 15px/1.2 ui-sans-serif}
+.on{box-shadow:inset 0 3px 0 #C8102E}
+.title{padding:16px 16px 4px;font:600 34px/1 ui-sans-serif;letter-spacing:-.02em}
+.meta{padding:4px 16px 14px;font:400 15px/1.4 ui-sans-serif;opacity:.75}
+.buy{display:flex;align-items:center;gap:12px;padding:0 16px}
+.price{font:600 28px/1 ui-sans-serif}
+.btn{flex:1;background:#141312;color:#fff;text-align:center;padding:18px;font:600 22px/1 ui-sans-serif;border-radius:2px}
+.chips{display:flex;gap:8px;padding:18px 16px;overflow:hidden}.chips span{border:1px solid #141312;padding:10px 14px;border-radius:99px;font:500 14px/1 ui-sans-serif;white-space:nowrap}
+</style></head><body>
+<header><span class="logo">Marginalia</span><nav><span>Buscar</span><span>Bolsa (0)</span></nav></header>
+<div class="field"><canvas id="c"></canvas></div>
+<div class="chord"><div><div class="k">No. 012 · Salida</div><div class="v">Fresa</div></div><div class="on"><div class="k">No. 047 · Corazón</div><div class="v">Peonía</div></div><div><div class="k">No. 103 · Fondo</div><div class="v">Almizcle</div></div></div>
+<div class="title">Peonía Nocturna</div>
+<div class="meta">Atelier Vey · Eau de Parfum · 100 ml</div>
+<div class="buy"><span class="price">L 3,450</span><span class="btn">Agregar a la bolsa</span></div>
+<div class="chips"><span>Floral</span><span>Frutal</span><span>Amaderado</span><span>Fresco</span><span>Ámbar</span></div>
+<script>function flower(o, cx, cy, r, petals, cA, cB, core) {
+  for (let i = 0; i < petals; i++) {
+    const a = (i / petals) * Math.PI * 2 + i * 0.3;
+    o.save(); o.translate(cx + Math.cos(a) * r * 0.35, cy + Math.sin(a) * r * 0.35); o.rotate(a);
+    const gr = o.createRadialGradient(0, 0, 0, 0, 0, r * 0.7);
+    gr.addColorStop(0, i % 2 ? cA : cB); gr.addColorStop(1, "rgba(255,255,255,0)");
+    o.fillStyle = gr; o.beginPath(); o.ellipse(0, 0, r * 0.7, r * 0.38, 0, 0, 7); o.fill(); o.restore();
+  }
+  const gc = o.createRadialGradient(cx, cy, 0, cx, cy, r * 0.3);
+  gc.addColorStop(0, core); gc.addColorStop(1, "rgba(255,255,255,0)");
+  o.fillStyle = gc; o.beginPath(); o.arc(cx, cy, r * 0.3, 0, 7); o.fill();
+}
+function glyphField(cv, cell, charset, ground, ink, paint) {
+  const W = cv.clientWidth, H = cv.clientHeight, d = 2;
+  cv.width = W * d; cv.height = H * d;
+  const g = cv.getContext("2d"); g.scale(d, d);
+  const cw = Math.ceil(W / cell), ch = Math.ceil(H / cell);
+  const off = document.createElement("canvas"); off.width = cw; off.height = ch;
+  const o = off.getContext("2d"); o.fillStyle = ground; o.fillRect(0, 0, cw, ch); paint(o, cw, ch);
+  const px = o.getImageData(0, 0, cw, ch).data;
+  g.font = `${cell * 0.95}px ui-sans-serif, system-ui`; g.textAlign = "center"; g.textBaseline = "middle";
+  for (let y = 0; y < ch; y++) for (let x = 0; x < cw; x++) {
+    const i = (y * cw + x) * 4, r = px[i], gg = px[i + 1], b = px[i + 2];
+    const l = (0.2126 * r + 0.7152 * gg + 0.0722 * b) / 255;
+    g.fillStyle = `rgb(${r},${gg},${b})`; g.fillRect(x * cell, y * cell, cell, cell);
+    const k = Math.min(charset.length - 1, Math.floor((1 - l) * charset.length * 1.15));
+    if (k > 0) { g.fillStyle = l < 0.35 ? "#f5f2ea" : ink; g.fillText(charset[k], x * cell + cell / 2, y * cell + cell / 2); }
+  }
+}
+
+glyphField(document.getElementById('c'),12," ·•+✦★○◯●","#ffffff","#141312",(o,w,h)=>{
+ const gr=o.createRadialGradient(w*.25,h*.3,0,w*.25,h*.3,w*.3);gr.addColorStop(0,"#d81b3a");gr.addColorStop(1,"rgba(255,255,255,0)");o.fillStyle=gr;o.fillRect(0,0,w,h);
+ flower(o,w*.6,h*.55,h*.55,11,"#ef7fb0","#b8326b","#4a0a2a")});
+</script></body></html>

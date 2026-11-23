@@ -1,0 +1,61 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=390">
+<style>
+*{box-sizing:border-box;margin:0}body{width:390px;height:844px;overflow:hidden;background:#E6E4DC;font-family:ui-sans-serif,system-ui,sans-serif;color:#111}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:#111;color:#F5F4EF}
+.logo{font:800 24px/1 ui-sans-serif;letter-spacing:.06em}
+.bag{border:2px solid #F5F4EF;padding:8px 12px;font:700 15px/1 ui-sans-serif}
+.label{margin:14px 12px;background:#F5F4EF;border:3px solid #111;position:relative}
+.row{display:flex;border-bottom:2px solid #111}.row>div{padding:8px 10px;flex:1}.row>div+div{border-left:2px solid #111}
+.k{font:700 10px/1.2 ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+.v{font:700 15px/1.2 ui-sans-serif}
+.bars{height:30px;background:repeating-linear-gradient(90deg,#111 0 2px,transparent 2px 4px,#111 4px 7px,transparent 7px 9px,#111 9px 10px,transparent 10px 13px)}
+.scan{height:282px;position:relative;border-bottom:2px solid #111;background:#fff}
+.scan canvas{width:100%;height:100%;display:block}
+.name{font:900 34px/1 ui-sans-serif;letter-spacing:-.01em;padding:12px 10px 6px}
+.price{font:900 30px/1 ui-sans-serif}
+.stamp{position:absolute;right:14px;top:92px;transform:rotate(-8deg);border:3px solid #2B59C3;color:#2B59C3;padding:6px 10px;font:900 22px/1 ui-sans-serif;background:rgba(245,244,239,.85)}
+.tape{display:block;margin:0 12px;background:#F4C20D;border:3px solid #111;padding:18px 14px;font:900 24px/1 ui-sans-serif;text-align:center}
+</style></head><body>
+<header><span class="logo">MARGINALIA</span><span class="bag">Bolsa (0)</span></header>
+<div class="label">
+  <div class="row"><div><div class="k">Guía No.</div><div class="v">MRG-0041</div></div><div style="flex:1.4"><div class="bars"></div></div></div>
+  <div class="scan"><canvas id="c"></canvas></div>
+  <div class="stamp">SELECCIÓN 11</div>
+  <div class="name">Peonía Nocturna</div>
+  <div class="row" style="border-top:2px solid #111"><div><div class="k">Casa</div><div class="v">Atelier Vey</div></div><div><div class="k">Tipo</div><div class="v">Eau de Parfum</div></div><div><div class="k">Tamaño</div><div class="v">100 ml</div></div></div>
+  <div class="row"><div><div class="k">Precio total</div><div class="price">L 3,450</div></div><div><div class="k">Entrega</div><div class="v">2–4 días hábiles</div></div></div>
+  <div class="row" style="border-bottom:0"><div><div class="k">Pago</div><div class="v">Contra entrega · Transferencia · Tarjeta</div></div></div>
+</div>
+<span class="tape">Agregar a la bolsa</span>
+<script>function flower(o, cx, cy, r, petals, cA, cB, core) {
+  for (let i = 0; i < petals; i++) {
+    const a = (i / petals) * Math.PI * 2 + i * 0.3;
+    o.save(); o.translate(cx + Math.cos(a) * r * 0.35, cy + Math.sin(a) * r * 0.35); o.rotate(a);
+    const gr = o.createRadialGradient(0, 0, 0, 0, 0, r * 0.7);
+    gr.addColorStop(0, i % 2 ? cA : cB); gr.addColorStop(1, "rgba(255,255,255,0)");
+    o.fillStyle = gr; o.beginPath(); o.ellipse(0, 0, r * 0.7, r * 0.38, 0, 0, 7); o.fill(); o.restore();
+  }
+  const gc = o.createRadialGradient(cx, cy, 0, cx, cy, r * 0.3);
+  gc.addColorStop(0, core); gc.addColorStop(1, "rgba(255,255,255,0)");
+  o.fillStyle = gc; o.beginPath(); o.arc(cx, cy, r * 0.3, 0, 7); o.fill();
+}
+function glyphField(cv, cell, charset, ground, ink, paint) {
+  const W = cv.clientWidth, H = cv.clientHeight, d = 2;
+  cv.width = W * d; cv.height = H * d;
+  const g = cv.getContext("2d"); g.scale(d, d);
+  const cw = Math.ceil(W / cell), ch = Math.ceil(H / cell);
+  const off = document.createElement("canvas"); off.width = cw; off.height = ch;
+  const o = off.getContext("2d"); o.fillStyle = ground; o.fillRect(0, 0, cw, ch); paint(o, cw, ch);
+  const px = o.getImageData(0, 0, cw, ch).data;
+  g.font = `${cell * 0.95}px ui-sans-serif, system-ui`; g.textAlign = "center"; g.textBaseline = "middle";
+  for (let y = 0; y < ch; y++) for (let x = 0; x < cw; x++) {
+    const i = (y * cw + x) * 4, r = px[i], gg = px[i + 1], b = px[i + 2];
+    const l = (0.2126 * r + 0.7152 * gg + 0.0722 * b) / 255;
+    g.fillStyle = `rgb(${r},${gg},${b})`; g.fillRect(x * cell, y * cell, cell, cell);
+    const k = Math.min(charset.length - 1, Math.floor((1 - l) * charset.length * 1.15));
+    if (k > 0) { g.fillStyle = l < 0.35 ? "#f5f2ea" : ink; g.fillText(charset[k], x * cell + cell / 2, y * cell + cell / 2); }
+  }
+}
+
+glyphField(document.getElementById('c'),9," ·•+✦★○◯●","#ffffff","#111",(o,w,h)=>{flower(o,w*.5,h*.48,h*.5,9,"#e8649a","#c8102e","#5a0b2a")});
+</script></body></html>

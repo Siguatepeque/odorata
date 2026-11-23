@@ -21,6 +21,7 @@ const es = {
   details: "Detalles",
   arrived: "Recién llegado",
   view: "Ver el perfume",
+  terms: { link: "Envíos y formas de pago", short: (fee: string) => `Envío a todo Honduras desde ${fee}. Pagas al recibir, por transferencia o con tarjeta.` },
   how: {
     title: "Cómo comprar",
     steps: [
@@ -76,6 +77,7 @@ const en: Dict = {
   details: "Details",
   arrived: "Just arrived",
   view: "See the fragrance",
+  terms: { link: "Delivery and payment", short: (fee: string) => `Delivery across Honduras from ${fee}. Pay on delivery, by transfer or by card.` },
   how: {
     title: "How to buy",
     steps: [

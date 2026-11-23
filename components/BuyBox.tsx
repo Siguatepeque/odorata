@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { add, totals, useBag } from "@/lib/bag";
 import { dict } from "@/lib/i18n";
@@ -47,7 +48,12 @@ export default function BuyBox({ product: p, lang }: { product: Product; lang: L
         </button>
       </div>
 
-      <p className="buy-pay">{t.pay}</p>
+      <p className="buy-pay">
+        {t.pay}{" "}
+        <Link href={`/${lang}/como-comprar`} className="link">
+          {t.terms.link}
+        </Link>
+      </p>
 
       <div role="status" className="buy-status">
         {done && (

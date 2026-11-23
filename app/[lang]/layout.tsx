@@ -34,7 +34,7 @@ export default async function Layout({ children, params }: LayoutProps<"/[lang]"
           </Link>
           <nav className="top-nav" aria-label={lang === "es" ? "Principal" : "Main"}>
             <Link href={`/${lang}/p/liquid-brun`}>{t.nav.fragrances}</Link>
-            <Link href={`/${lang}#como-comprar`}>{t.nav.how}</Link>
+            <Link href={`/${lang}/como-comprar`}>{t.nav.how}</Link>
           </nav>
           <BagButton lang={lang} />
         </header>
@@ -43,6 +43,10 @@ export default async function Layout({ children, params }: LayoutProps<"/[lang]"
           <Link href={`/${lang}`} className="wordmark">
             Marginalia
           </Link>
+          <nav className="foot-nav" aria-label={lang === "es" ? "Pie de página" : "Footer"}>
+            <Link href={`/${lang}/p/liquid-brun`}>{t.nav.fragrances}</Link>
+            <Link href={`/${lang}/como-comprar`}>{t.nav.how}</Link>
+          </nav>
           <p>
             {t.footer.lang}:{" "}
             <Link href={`/${t.other.lang}`} hrefLang={t.other.lang} lang={t.other.lang}>

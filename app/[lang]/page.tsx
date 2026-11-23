@@ -36,48 +36,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             <QuickAdd product={p} lang={lang} />
           </div>
         </div>
-      </section>
-
-      <section id="como-comprar" className="how" aria-labelledby="how-h">
-        <h2 id="how-h" className="section-title">
-          {t.how.title}
-        </h2>
-        <ol className="steps">
-          {t.how.steps.map(([title, body], i) => (
-            <li key={title}>
-              <span className="step-n" aria-hidden="true">
-                {i + 1}
-              </span>
-              <h3>{title}</h3>
-              <p>{body}</p>
-            </li>
-          ))}
-        </ol>
-        <div className="terms">
-          <table>
-            <caption>{t.how.delivery}</caption>
-            <tbody>
-              {[DELIVERY.city, DELIVERY.rest].map((d) => (
-                <tr key={d.fee}>
-                  <th scope="row">{d.where[lang]}</th>
-                  <td>{lempiras(d.fee)}</td>
-                  <td>{d.days[lang]}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div>
-            <h3 className="terms-title">{t.how.payment}</h3>
-            <ul className="payments">
-              {t.how.payments.map(([name, body]) => (
-                <li key={name}>
-                  <strong>{name}</strong>
-                  <span>{body}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <p className="reassure">
+          {t.terms.short(lempiras(DELIVERY.city.fee))}{" "}
+          <Link href={`/${lang}/como-comprar`}>{t.terms.link}</Link>
+        </p>
       </section>
     </>
   );

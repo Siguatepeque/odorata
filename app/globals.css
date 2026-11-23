@@ -128,7 +128,7 @@ ol {
   padding: 0 var(--gutter);
   height: 60px;
   background: var(--paper);
-  border-bottom: 2px solid var(--ink);
+  border-bottom: 1px solid var(--hair);
 }
 
 .wordmark {
@@ -254,14 +254,14 @@ ol {
   height: clamp(460px, 118vw, 620px);
   overflow: hidden;
   background: var(--paper);
-  border-block: 2px solid var(--ink);
+  box-shadow: inset 0 0 0 1px var(--hair);
 }
 
 @media (min-width: 900px) {
   .stage {
-    height: min(80vh, 780px);
+    /* leave room for the headline above and the buy row below, so both land in the first screen */
+    height: clamp(400px, calc(100svh - 14vw - 270px), 720px);
     margin: 0 var(--gutter);
-    border: 2px solid var(--ink);
   }
 
 }
@@ -305,15 +305,13 @@ ol {
 
 .stage-caption {
   position: absolute;
-  left: 0;
-  bottom: 0;
+  left: 12px;
+  bottom: 12px;
   display: grid;
   gap: 2px;
   max-width: min(46%, 300px);
   padding: 12px 14px 14px;
   background: var(--paper);
-  border-top: 2px solid var(--ink);
-  border-right: 2px solid var(--ink);
   font-size: 14px;
   line-height: 1.3;
 }
@@ -336,15 +334,13 @@ ol {
 
 .stage-toggle {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 12px;
+  top: 12px;
   min-height: 40px;
   padding: 0 14px;
   font-size: 12px;
   background: var(--paper);
-  border: 0;
-  border-left: 2px solid var(--ink);
-  border-bottom: 2px solid var(--ink);
+  border: 1.5px solid var(--ink);
 }
 
 .stage-toggle:hover {
@@ -432,7 +428,6 @@ ol {
   letter-spacing: -0.035em;
   line-height: 0.85;
   padding-bottom: 20px;
-  border-bottom: 2px solid var(--ink);
 }
 
 .steps {
@@ -474,6 +469,7 @@ ol {
 
   .steps li {
     grid-template-columns: 1fr;
+    align-content: start;
     row-gap: 14px;
     padding: 24px 24px 28px 0;
     border-bottom: 0;
@@ -485,6 +481,7 @@ ol {
   }
 
   .step-n {
+    grid-row: auto;
     font-size: 88px;
   }
 }
@@ -494,7 +491,7 @@ ol {
   gap: 40px;
   margin-top: 40px;
   padding-top: 24px;
-  border-top: 2px solid var(--ink);
+  border-top: 1px solid var(--hair);
 }
 
 @media (min-width: 900px) {
@@ -686,7 +683,7 @@ ol {
   gap: 12px;
   padding: 10px var(--gutter) max(10px, env(safe-area-inset-bottom));
   background: var(--paper);
-  border-top: 2px solid var(--ink);
+  border-top: 1px solid var(--hair);
   transform: translateY(110%);
   transition: transform 320ms var(--ease);
 }
@@ -720,8 +717,8 @@ ol {
 
 .label {
   font-size: 13px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid var(--ink);
+  color: var(--ink-2);
+  padding-bottom: 6px;
   margin-bottom: 4px;
 }
 
@@ -766,7 +763,6 @@ ol {
   height: 100dvh;
   max-height: 100dvh;
   border: 0;
-  border-left: 2px solid var(--ink);
   background: var(--paper);
   color: var(--ink);
   transition: transform 380ms var(--ease), overlay 380ms allow-discrete, display 380ms allow-discrete;
@@ -798,7 +794,7 @@ ol {
   justify-content: space-between;
   align-items: baseline;
   padding-bottom: 14px;
-  border-bottom: 2px solid var(--ink);
+  border-bottom: 1px solid var(--hair);
 }
 
 .sheet-head h2 {
@@ -887,7 +883,7 @@ ol {
 
 .sums-total {
   padding-top: 10px;
-  border-top: 2px solid var(--ink);
+  border-top: 1px solid var(--ink);
   font-size: 22px;
   font-weight: 900;
 }
@@ -905,6 +901,56 @@ ol {
   color: var(--ink-2);
 }
 
+.reassure {
+  padding: 18px var(--gutter) 0;
+  color: var(--ink-2);
+  font-size: 15px;
+}
+
+.reassure a {
+  color: var(--ink);
+  font-weight: 700;
+  text-underline-offset: 4px;
+}
+
+.sheet-how {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 18px;
+  background: #f5f4f2;
+  font-size: 15px;
+}
+
+.sheet-how .label {
+  padding: 0;
+  margin-top: 6px;
+}
+
+.sheet-how li {
+  display: grid;
+}
+
+.sheet-how li span:last-child {
+  color: var(--ink-2);
+}
+
+.sheet-how .link {
+  justify-self: start;
+}
+
+.foot-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+}
+
+.foot-nav a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
 /* ---------- Footer ---------- */
 
 .foot {
@@ -912,7 +958,7 @@ ol {
   gap: 10px;
   margin-top: 96px;
   padding: 24px var(--gutter) 96px;
-  border-top: 2px solid var(--ink);
+  border-top: 1px solid var(--hair);
 }
 
 .foot a:not(.wordmark) {

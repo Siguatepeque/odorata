@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { setQty, totals, useBag } from "@/lib/bag";
 import { dict } from "@/lib/i18n";
@@ -119,6 +120,27 @@ export function BagSheet({ lang }: { lang: Lang }) {
               </p>
             </>
           )}
+
+          <section className="sheet-how" aria-labelledby="sheet-how-h">
+            <h3 id="sheet-how-h" className="label">
+              {t.how.delivery}
+            </h3>
+            <ul>
+              {[DELIVERY.city, DELIVERY.rest].map((d) => (
+                <li key={d.fee}>
+                  <span>{d.where[lang]}</span>
+                  <span>
+                    {lempiras(d.fee)} · {d.days[lang]}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <h3 className="label">{t.how.payment}</h3>
+            <p>{t.how.payments.map(([name]) => name).join(" · ")}</p>
+            <Link href={`/${lang}/como-comprar`} className="link" onClick={() => ref.current?.close()}>
+              {t.nav.how}
+            </Link>
+          </section>
         </div>
       )}
     </dialog>

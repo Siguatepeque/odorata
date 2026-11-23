@@ -15,7 +15,8 @@ export type Product = {
   stock: number;
   photo: { src: string; w: number; h: number }; // cut-out, transparent PNG
   accord: { note: Text; image: string; also: Text; focus: { x: number; y: number; zoom: number } }; // the top note given the glyph treatment; focus frames it (0-1, zoom 1 = cover)
-  pyramid: { top: Text; heart: Text; base: Text };
+  /** [note id, prominence]: 3 = leads the scent, 2 = supporting, 1 = barely there. */
+  pyramid: Record<"top" | "heart" | "base", [string, 1 | 2 | 3][]>;
   about: Text;
   facts: { label: Text; value: Text }[];
 };
@@ -38,9 +39,9 @@ export const PRODUCTS: Product[] = [
       also: { es: "con cardamomo, azahar y bergamota", en: "with cardamom, orange blossom and bergamot" },
     },
     pyramid: {
-      top: { es: "Canela, cardamomo, azahar, bergamota", en: "Cinnamon, cardamom, orange blossom, bergamot" },
-      heart: { es: "Vainilla bourbon, elemí", en: "Bourbon vanilla, elemi" },
-      base: { es: "Praliné, ámbar gris, almizcle, madera de guayaco", en: "Praline, ambroxan, musk, guaiac wood" },
+      top: [["canela", 3], ["azahar", 2], ["cardamomo", 2], ["bergamota", 1]],
+      heart: [["vainilla", 3], ["elemi", 1]],
+      base: [["praline", 3], ["ambroxan", 2], ["almizcle", 2], ["guayaco", 2]],
     },
     about: {
       es: "Abre caliente: canela y cardamomo, iluminados por un poco de azahar y bergamota. Después llega la vainilla bourbon, suave y cremosa, y al final queda un fondo de praliné y maderas que se pega a la piel. Dulce, pero nunca infantil.",
@@ -54,6 +55,20 @@ export const PRODUCTS: Product[] = [
     ],
   },
 ];
+
+// Every note with its picture. Molecules (ambroxan, musk) are drawn, since they are made in a lab.
+export const NOTES: Record<string, { name: Text; img: string }> = {
+  canela: { name: { es: "Canela", en: "Cinnamon" }, img: "/notes/ingredients/canela.jpg" },
+  azahar: { name: { es: "Azahar", en: "Orange blossom" }, img: "/notes/ingredients/azahar.jpg" },
+  cardamomo: { name: { es: "Cardamomo", en: "Cardamom" }, img: "/notes/ingredients/cardamomo.jpg" },
+  bergamota: { name: { es: "Bergamota", en: "Bergamot" }, img: "/notes/ingredients/bergamota.jpg" },
+  vainilla: { name: { es: "Vainilla bourbon", en: "Bourbon vanilla" }, img: "/notes/ingredients/vainilla.jpg" },
+  elemi: { name: { es: "Elemí", en: "Elemi" }, img: "/notes/ingredients/elemi.jpg" },
+  praline: { name: { es: "Praliné", en: "Praline" }, img: "/notes/ingredients/praline.jpg" },
+  ambroxan: { name: { es: "Ámbar gris", en: "Ambroxan" }, img: "/notes/ingredients/ambroxan.jpg" },
+  almizcle: { name: { es: "Almizcle", en: "Musk" }, img: "/notes/ingredients/almizcle.jpg" },
+  guayaco: { name: { es: "Madera de guayaco", en: "Guaiac wood" }, img: "/notes/ingredients/guayaco.jpg" },
+};
 
 export const product = (handle: string) => PRODUCTS.find((p) => p.handle === handle);
 

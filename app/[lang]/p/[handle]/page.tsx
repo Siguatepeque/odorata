@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { dict, LANGS } from "@/lib/i18n";
-import { PRODUCTS, product, type Lang } from "@/lib/products";
+import { NOTES, PRODUCTS, product, type Lang } from "@/lib/products";
 import AccordStage from "@/components/AccordStage";
 import FitText from "@/components/FitText";
 import BuyBox from "@/components/BuyBox";
@@ -49,20 +49,25 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/p/[hand
             <h2 id="notes-h" className="label">
               {t.pyramid.title}
             </h2>
-            <dl className="rows">
-              <div>
-                <dt>{t.pyramid.top}</dt>
-                <dd>{p.pyramid.top[lang]}</dd>
-              </div>
-              <div>
-                <dt>{t.pyramid.heart}</dt>
-                <dd>{p.pyramid.heart[lang]}</dd>
-              </div>
-              <div>
-                <dt>{t.pyramid.base}</dt>
-                <dd>{p.pyramid.base[lang]}</dd>
-              </div>
-            </dl>
+            <div className="tiers">
+              {(["top", "heart", "base"] as const).map((tier) => (
+                <div key={tier} className="tier">
+                  <h3>{t.pyramid[tier]}</h3>
+                  <ul className="notes">
+                    {p.pyramid[tier].map(([id, level]) => (
+                      <li key={id} data-level={level}>
+                        {/* eslint-disable-next-line @next/next/no-img-element -- small square ingredient photo */}
+                        <img src={NOTES[id].img} alt="" width={160} height={160} loading="lazy" />
+                        <span>
+                          {NOTES[id].name[lang]}
+                          {level !== 2 && <span className="sr-only">, {level === 3 ? t.pyramid.lead : t.pyramid.subtle}</span>}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section aria-labelledby="details-h">

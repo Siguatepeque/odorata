@@ -784,6 +784,60 @@ ol {
   line-height: 1.4;
 }
 
+/* Notes as pictures: people recognise an ingredient faster than its name. */
+.tiers {
+  display: grid;
+  gap: 22px;
+  padding-top: 14px;
+}
+
+.tier h3 {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-bottom: 10px;
+}
+
+/* Size and ink say how much of the scent each note is: lead notes big and dark, subtle ones small and soft. */
+.notes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 14px 14px;
+}
+
+.notes li {
+  display: grid;
+  gap: 6px;
+  width: 92px;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.notes li[data-level="3"] {
+  width: 120px;
+  font-weight: 800;
+}
+
+.notes li[data-level="1"] {
+  width: 68px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.notes li[data-level="1"] img {
+  opacity: 0.6;
+}
+
+.notes img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
 /* ---------- Bag sheet ---------- */
 
 .sheet {

@@ -6,7 +6,7 @@ import { EffectComposer, RenderPass, EffectPass, BlendFunction } from "postproce
 import { AsciiEffect, InkBleedEffect, MemoryGrid } from "@niccolofanton/morphing-ascii-shader";
 import { PRESET, SOURCE_FRAG, SOURCE_VERT, patchDarkMode, type Grid, type Ascii } from "@/lib/glyph";
 import { dict } from "@/lib/i18n";
-import type { Lang, Product } from "@/lib/products";
+import { NOTES, type Lang, type Product } from "@/lib/products";
 
 const motionQuery = () => matchMedia("(prefers-reduced-motion: reduce)");
 const subscribeMotion = (cb: () => void) => {
@@ -162,11 +162,36 @@ export default function AccordStage({ product: p, lang, priority = false }: { pr
         alt={`${p.name}, ${p.house}, ${p.type[lang]} ${p.ml} ml`}
         fetchPriority={priority ? "high" : undefined}
       />
-      <figcaption className="stage-caption">
+      {/* ponytail: four caption treatments under review (?ver=1 switcher); keep the chosen one, delete the rest */}
+      <figcaption className="stage-caption cap cap-a">
         <span className="stage-tier">{t.stage.top}</span>
         <strong>{p.accord.note[lang]}</strong>
         <span>{p.accord.also[lang]}</span>
       </figcaption>
+      <p className="cap cap-b">
+        {t.stage.top} <span aria-hidden="true">—</span> <strong>{p.accord.note[lang]}</strong>
+      </p>
+      <ol className="cap cap-c">
+        {(["top", "heart", "base"] as const).map((k, i) => (
+          <li key={k} aria-current={i === 0 ? "step" : undefined}>
+            <span>{t.pyramid[k]}</span> <strong>{NOTES[p.pyramid[k][0][0]].name[lang]}</strong>
+          </li>
+        ))}
+      </ol>
+      <a className="cap cap-d" href="#notas">
+        <span className="cap-thumbs" aria-hidden="true">
+          {(["top", "heart", "base"] as const).map((k) => (
+            // eslint-disable-next-line @next/next/no-img-element -- tiny note thumbnail
+            <img key={k} src={NOTES[p.pyramid[k][0][0]].img} alt="" width={40} height={40} />
+          ))}
+        </span>
+        <span>
+          <strong>
+            {t.stage.top}: {p.accord.note[lang]}
+          </strong>
+          <span>{lang === "es" ? "Ver las notas ↓" : "See the notes ↓"}</span>
+        </span>
+      </a>
       <button type="button" className="stage-toggle" aria-label={playing ? t.stage.pause : t.stage.play} title={playing ? t.stage.pause : t.stage.play} onClick={() => setPicked(!playing)}>
         <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
           {playing ? <path d="M4 2.5h2.6v11H4zM9.4 2.5H12v11H9.4z" /> : <path d="M4.5 2.2 13.5 8l-9 5.8z" />}

@@ -5,6 +5,7 @@ import { NOTES, PRODUCTS, product, type Lang } from "@/lib/products";
 import AccordStage from "@/components/AccordStage";
 import FitText from "@/components/FitText";
 import BuyBox from "@/components/BuyBox";
+import PreviewSwitch from "@/components/PreviewSwitch";
 
 export const generateStaticParams = () => LANGS.flatMap((lang) => PRODUCTS.map((p) => ({ lang, handle: p.handle })));
 
@@ -30,6 +31,15 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/p/[hand
             {p.type[lang]} · {p.ml} ml · {p.year}
           </span>
         </p>
+        {/* ponytail: details as tags vs table under review (?ver=1); keep one */}
+        <ul className="pdp-tags">
+          {p.facts
+            .slice(0, 3)
+            .flatMap((f) => f.value[lang].split(", "))
+            .map((v) => (
+              <li key={v}>{v.charAt(0).toUpperCase() + v.slice(1)}</li>
+            ))}
+        </ul>
       </header>
 
       <AccordStage product={p} lang={lang} priority />
@@ -45,7 +55,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/p/[hand
             <p className="about">{p.about[lang]}</p>
           </section>
 
-          <section aria-labelledby="notes-h">
+          <section id="notas" aria-labelledby="notes-h">
             <h2 id="notes-h" className="label">
               {t.pyramid.title}
             </h2>
@@ -70,7 +80,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/p/[hand
             </div>
           </section>
 
-          <section aria-labelledby="details-h">
+          <section className="details-table" aria-labelledby="details-h">
             <h2 id="details-h" className="label">
               {t.details}
             </h2>
@@ -85,6 +95,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/p/[hand
           </section>
         </div>
       </div>
+      <PreviewSwitch />
     </article>
   );
 }

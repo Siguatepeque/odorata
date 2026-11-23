@@ -35,6 +35,10 @@ function Row({ p, lang, detail, saving, note }: { p: Product; lang: Lang; detail
   const t = T[lang];
   return (
     <Link href={`/${lang}/p/${p.handle}`} className="alt-row">
+      <span className="alt-bottle" aria-hidden="true">
+        {/* eslint-disable-next-line @next/next/no-img-element -- small cut-out; empty slot keeps rows aligned */}
+        {p.photo && <img src={p.photo.src} alt="" width={p.photo.w} height={p.photo.h} loading="lazy" />}
+      </span>
       <span className="alt-name">
         <strong>{p.name}</strong>
         <span>{detail ? `${p.house} · ${detail}` : p.house}</span>

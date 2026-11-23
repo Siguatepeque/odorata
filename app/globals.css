@@ -1039,12 +1039,24 @@ ol {
 
 .alt-row {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 28px 1fr auto auto;
   align-items: center;
   gap: 16px;
   padding: 12px 0;
   border-bottom: 1px solid var(--hair);
   text-decoration: none;
+}
+
+/* The bottle, small and boxless: people recognise a perfume by its bottle first. */
+.alt-bottle {
+  display: grid;
+  place-items: center;
+  height: 48px;
+}
+
+.alt-bottle img {
+  height: 48px;
+  width: auto;
 }
 
 .alt-row:hover .notes-arrow {

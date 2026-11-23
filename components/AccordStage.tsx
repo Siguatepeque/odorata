@@ -180,9 +180,8 @@ export default function AccordStage({ product: p, lang, priority = false }: { pr
       </ol>
       <a className="cap cap-d" href="#notas">
         <span>
-          <strong>
-            {t.stage.top}: {p.accord.note[lang]}
-          </strong>
+          <span className="stage-tier">{t.stage.top}</span>
+          <strong>{p.accord.note[lang]}</strong>
           <span>
             {lang === "es" ? "Ver las" : "See all"} {Object.values(p.pyramid).flat().length} {lang === "es" ? "notas" : "notes"}
           </span>

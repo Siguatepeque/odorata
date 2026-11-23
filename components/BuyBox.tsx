@@ -40,8 +40,6 @@ export default function BuyBox({ product: p, lang, children }: { product: Produc
         {t.priceNote} {t.delivery(lempiras(DELIVERY.city.fee))}
       </p>
       <p className={p.stock ? "buy-stock" : "buy-stock out"}>{p.stock ? t.left(p.stock) : t.soldOut}</p>
-      {children}
-
       <div className="buy-row">
         <Qty value={q} max={Math.max(1, room)} onChange={setQty} label={t.qty} lang={lang} />
         <button ref={button} type="button" className="btn btn-solid" disabled={room <= 0} onClick={buy}>
@@ -66,6 +64,9 @@ export default function BuyBox({ product: p, lang, children }: { product: Produc
           </p>
         )}
       </div>
+
+      {/* Suggestions sit after the action, so the button clearly buys this perfume only. */}
+      {children}
 
       <div className="buy-bar" data-show={showBar || undefined} aria-hidden={!showBar}>
         <span>

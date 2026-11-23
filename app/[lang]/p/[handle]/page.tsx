@@ -31,18 +31,24 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/p/[hand
             {p.type[lang]} · {p.ml} ml · {p.year}
           </span>
         </p>
-        {/* ponytail: details as tags vs table under review (?ver=1); keep one */}
-        <dl className="pdp-tags">
-          {p.facts.slice(0, 3).map((f) => (
-            <div key={f.label.es}>
-              <dt>{f.label[lang]}</dt>
-              <dd>{f.value[lang]}</dd>
-            </div>
-          ))}
-        </dl>
       </header>
 
-      <AccordStage product={p} lang={lang} priority />
+      {/* ponytail: details as a glass spec band vs table under review (?ver=1); keep one */}
+      <AccordStage
+        product={p}
+        lang={lang}
+        priority
+        top={
+          <dl className="pdp-tags">
+            {p.facts.slice(0, 3).map((f) => (
+              <div key={f.label.es}>
+                <dt>{f.label[lang]}</dt>
+                <dd>{f.value[lang]}</dd>
+              </div>
+            ))}
+          </dl>
+        }
+      />
 
       <div className="pdp-body">
         <BuyBox product={p} lang={lang} />

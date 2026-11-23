@@ -18,7 +18,7 @@ const subscribeMotion = (cb: () => void) => {
 // The product standing in front of its top note. The note is a photograph run through the
 // lab's glyph pipeline (still -> per-cell memory -> glyph morph -> ink bleed); a slow drift
 // over the still keeps the cells morphing, and the pointer leans the field for depth.
-export default function AccordStage({ product: p, lang, priority = false }: { product: Product; lang: Lang; priority?: boolean }) {
+export default function AccordStage({ product: p, lang, priority = false, top }: { product: Product; lang: Lang; priority?: boolean; top?: React.ReactNode }) {
   const t = dict(lang);
   const host = useRef<HTMLDivElement>(null);
   const playRef = useRef(true);
@@ -192,6 +192,7 @@ export default function AccordStage({ product: p, lang, priority = false }: { pr
           </svg>
         </span>
       </a>
+      {top}
       <button type="button" className="stage-toggle" aria-label={playing ? t.stage.pause : t.stage.play} title={playing ? t.stage.pause : t.stage.play} onClick={() => setPicked(!playing)}>
         <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
           {playing ? <path d="M4 2.5h2.6v11H4zM9.4 2.5H12v11H9.4z" /> : <path d="M4.5 2.2 13.5 8l-9 5.8z" />}

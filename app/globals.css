@@ -518,11 +518,20 @@ ol {
 }
 
 /* Details: table, or a spec strip under the name (type, not chips: nothing here is pressable) */
+/* A glass band across the top of the stage: the cap and the field show through it. */
 .pdp-tags {
   display: none;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 18px;
-  border-top: 1px solid var(--hair);
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 68px; /* clear of the play button */
+  padding: 0 4px 12px;
+  background: rgb(255 255 255 / 0.3);
+  -webkit-backdrop-filter: blur(10px) saturate(1.4);
+  backdrop-filter: blur(10px) saturate(1.4);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.45);
+  text-shadow: 0 0 8px rgb(255 255 255 / 0.9);
 }
 
 :root[data-details="tags"] .pdp-tags {
@@ -537,12 +546,11 @@ ol {
   display: grid;
   gap: 4px;
   align-content: start;
-  padding: 12px 16px 0 0;
+  padding: 12px 12px 0;
 }
 
 .pdp-tags > div + div {
-  padding-left: 16px;
-  border-left: 1px solid var(--hair);
+  border-left: 1px solid rgb(255 255 255 / 0.6);
 }
 
 .pdp-tags dt {
@@ -550,7 +558,7 @@ ol {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--ink-2);
+  color: #3a3a3a;
 }
 
 .pdp-tags dd {

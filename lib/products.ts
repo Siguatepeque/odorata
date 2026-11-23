@@ -238,7 +238,7 @@ export const PRODUCTS: Product[] = [
     accord: {
       note: { es: "Manzana", en: "Apple" },
       image: "/products/apple-plate.jpg",
-      focus: { x: 0.6, y: 0.5, zoom: 1.15 },
+      focus: { x: 0.38, y: 0.5, zoom: 1.15 },
       also: { es: "con mandarina, bergamota y olíbano", en: "with mandarin, bergamot and frankincense" },
     },
     pyramid: {

@@ -1,0 +1,113 @@
+import type { Lang } from "./products";
+
+const es = {
+  htmlLang: "es-HN",
+  other: { lang: "en" as Lang, label: "English" },
+  skip: "Saltar al contenido",
+  nav: { fragrances: "Perfumes", how: "Cómo comprar", bag: "Bolsa" },
+  stage: { pause: "Pausar", play: "Animar", top: "Salida" },
+  add: "Agregar a la bolsa",
+  added: "Agregado",
+  soldOut: "Agotado",
+  left: (n: number) => (n <= 3 ? `Quedan ${n}` : "Disponible"),
+  priceNote: "Precio final, impuestos incluidos.",
+  delivery: (fee: string) => `Envío a todo Honduras desde ${fee}.`,
+  pay: "Pagas en efectivo al recibir, por transferencia o con tarjeta.",
+  qty: "Cantidad",
+  less: "Quitar uno",
+  more: "Agregar uno",
+  pyramid: { title: "Notas", top: "Salida", heart: "Corazón", base: "Fondo" },
+  about: "Cómo huele",
+  details: "Detalles",
+  arrived: "Recién llegado",
+  view: "Ver el perfume",
+  how: {
+    title: "Cómo comprar",
+    steps: [
+      ["Elige", "Cada perfume dice de qué está hecho, cuándo usarlo y cuánto cuesta. El precio que ves es el final."],
+      ["Agrega a la bolsa", "Puedes cambiar la cantidad o quitarlo cuando quieras."],
+      ["Dinos dónde", "Nombre, teléfono, dirección y un punto de referencia."],
+      ["Paga como prefieras", "Efectivo al recibir, transferencia bancaria o tarjeta."],
+    ],
+    delivery: "Envío",
+    payment: "Formas de pago",
+    payments: [
+      ["Efectivo al recibir", "Pagas al repartidor cuando llega tu pedido."],
+      ["Transferencia bancaria", "Te enviamos los datos por WhatsApp."],
+      ["Tarjeta", "Crédito o débito, en una página segura."],
+    ],
+  },
+  bag: {
+    title: "Tu bolsa",
+    close: "Cerrar",
+    empty: "Tu bolsa está vacía.",
+    remove: "Quitar",
+    subtotal: "Productos",
+    shipping: "Envío",
+    shippingFrom: (x: string) => `desde ${x}`,
+    total: "Total estimado",
+    checkout: "Continuar con el pedido",
+    checkoutNote: "El pago se conecta con Shopify en la siguiente etapa.",
+    items: (n: number) => (n === 1 ? "1 producto" : `${n} productos`),
+  },
+  footer: { lang: "Language", demo: "Demostración: precio y existencias de ejemplo. Foto del producto: Notino. Canela: Pixabay en Pexels." },
+};
+
+export type Dict = typeof es;
+
+const en: Dict = {
+  htmlLang: "en",
+  other: { lang: "es", label: "Español" },
+  skip: "Skip to content",
+  nav: { fragrances: "Fragrances", how: "How to buy", bag: "Bag" },
+  stage: { pause: "Pause", play: "Animate", top: "Top note" },
+  add: "Add to bag",
+  added: "Added",
+  soldOut: "Sold out",
+  left: (n: number) => (n <= 3 ? `${n} left` : "In stock"),
+  priceNote: "Final price, taxes included.",
+  delivery: (fee: string) => `Delivery across Honduras from ${fee}.`,
+  pay: "Pay cash on delivery, by bank transfer or by card.",
+  qty: "Quantity",
+  less: "Remove one",
+  more: "Add one",
+  pyramid: { title: "Notes", top: "Top", heart: "Heart", base: "Base" },
+  about: "How it smells",
+  details: "Details",
+  arrived: "Just arrived",
+  view: "See the fragrance",
+  how: {
+    title: "How to buy",
+    steps: [
+      ["Choose", "Every fragrance says what it's made of, when to wear it and what it costs. The price shown is final."],
+      ["Add to bag", "Change the quantity or remove it any time."],
+      ["Tell us where", "Name, phone, address and a landmark."],
+      ["Pay how you like", "Cash on delivery, bank transfer or card."],
+    ],
+    delivery: "Delivery",
+    payment: "Payment",
+    payments: [
+      ["Cash on delivery", "Pay the courier when your order arrives."],
+      ["Bank transfer", "We send the details on WhatsApp."],
+      ["Card", "Credit or debit, on a secure page."],
+    ],
+  },
+  bag: {
+    title: "Your bag",
+    close: "Close",
+    empty: "Your bag is empty.",
+    remove: "Remove",
+    subtotal: "Products",
+    shipping: "Delivery",
+    shippingFrom: (x: string) => `from ${x}`,
+    total: "Estimated total",
+    checkout: "Continue to order",
+    checkoutNote: "Payment connects to Shopify in the next stage.",
+    items: (n: number) => (n === 1 ? "1 item" : `${n} items`),
+  },
+  footer: { lang: "Idioma", demo: "Demo: example price and stock. Product photo: Notino. Cinnamon: Pixabay on Pexels." },
+};
+
+export const dict = (lang: Lang) => (lang === "en" ? en : es);
+export const LANGS: Lang[] = ["es", "en"];
+export const isLang = (s: string): s is Lang => s === "es" || s === "en";

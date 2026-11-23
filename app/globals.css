@@ -461,8 +461,8 @@ ol {
   bottom: 12px;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 28px;
-  min-width: min(52%, 290px); /* reach across the bottle base: glass needs something behind it */
+  gap: 16px;
+  min-width: min(46%, 250px); /* just reaches the bottle edge: glass needs something behind it */
   padding: 12px 12px 14px 16px;
   text-decoration: none;
   color: var(--ink);

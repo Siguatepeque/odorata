@@ -49,7 +49,7 @@ Kept in the repo, not shown on the site. CC BY and CC BY-SA images need this att
 - apple-plate.jpg: Wikimedia Commons File:Red Apple.jpg by Abhijit Tembhekar, CC BY 2.0 (placed on white)
 - monarque.png: product photo from Cosmetify. Placeholder; replace with your own photography before going live.
 - island-vanilla-dunes.png, historic-sahara.png, art-of-nature-ii.png: product photos from Notino. Placeholders; replace with your own photography before going live.
-- bergamot-plate.jpg: File:Bergamot orange - whole and slice.jpg by Ivar Leidus, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Bergamot_orange_-_whole_and_slice.jpg (cut out and placed on white)
+- citrus-plate.jpg: Pexels photo 1414110, Pexels licence (backdrop whitened, placed on white)
 - hawas-kobra.png, hawas-ice.png, amber-oud-aqua-dubai.png, marwa.png: product photos from Notino. Placeholders; replace with your own photography before going live.
-- hectic.png, imagination.png: product photos from Fragrantica. Placeholders; replace with your own photography before going live.
+- hectic.png: product photo from Fragrantica. imagination.png: product photo from louisvuitton.com. Placeholders; replace with your own photography before going live.
 - imaginary.png: product photo from Montagne Parfums. Placeholder; replace with your own photography before going live.

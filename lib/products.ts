@@ -300,8 +300,8 @@ export const PRODUCTS: Product[] = [
     photo: { src: `${BASE}/products/imagination.png`, w: 251, h: 600 },
     accord: {
       note: { es: "Bergamota", en: "Bergamot" },
-      image: `${BASE}/products/bergamot-plate.jpg`,
-      focus: { x: 0.62, y: 0.5, zoom: 1.15 },
+      image: `${BASE}/products/citrus-plate.jpg`,
+      focus: { x: 0.38, y: 0.5, zoom: 1.15 },
       also: { es: "con té negro y ámbar gris", en: "with black tea and ambroxan" },
     },
     pyramid: {
@@ -332,8 +332,8 @@ export const PRODUCTS: Product[] = [
     photo: { src: `${BASE}/products/hectic.png`, w: 204, h: 600 },
     accord: {
       note: { es: "Bergamota", en: "Bergamot" },
-      image: `${BASE}/products/bergamot-plate.jpg`,
-      focus: { x: 0.62, y: 0.5, zoom: 1.15 },
+      image: `${BASE}/products/citrus-plate.jpg`,
+      focus: { x: 0.38, y: 0.5, zoom: 1.15 },
       also: { es: "con té negro y ámbar gris", en: "with black tea and ambroxan" },
     },
     pyramid: {
@@ -369,8 +369,8 @@ export const PRODUCTS: Product[] = [
     photo: { src: `${BASE}/products/imaginary.png`, w: 241, h: 600 },
     accord: {
       note: { es: "Bergamota", en: "Bergamot" },
-      image: `${BASE}/products/bergamot-plate.jpg`,
-      focus: { x: 0.62, y: 0.5, zoom: 1.15 },
+      image: `${BASE}/products/citrus-plate.jpg`,
+      focus: { x: 0.38, y: 0.5, zoom: 1.15 },
       also: { es: "con jengibre, té negro y ámbar gris", en: "with ginger, black tea and ambroxan" },
     },
     pyramid: {
@@ -406,8 +406,8 @@ export const PRODUCTS: Product[] = [
     photo: { src: `${BASE}/products/marwa.png`, w: 269, h: 600 },
     accord: {
       note: { es: "Bergamota", en: "Bergamot" },
-      image: `${BASE}/products/bergamot-plate.jpg`,
-      focus: { x: 0.62, y: 0.5, zoom: 1.15 },
+      image: `${BASE}/products/citrus-plate.jpg`,
+      focus: { x: 0.38, y: 0.5, zoom: 1.15 },
       also: { es: "con jengibre, canela y té negro", en: "with ginger, cinnamon and black tea" },
     },
     pyramid: {
@@ -443,8 +443,8 @@ export const PRODUCTS: Product[] = [
     photo: { src: `${BASE}/products/hawas-kobra.png`, w: 350, h: 600 },
     accord: {
       note: { es: "Bergamota", en: "Bergamot" },
-      image: `${BASE}/products/bergamot-plate.jpg`,
-      focus: { x: 0.62, y: 0.5, zoom: 1.15 },
+      image: `${BASE}/products/citrus-plate.jpg`,
+      focus: { x: 0.38, y: 0.5, zoom: 1.15 },
       also: { es: "con jengibre, mandarina y té verde", en: "with ginger, mandarin and green tea" },
     },
     pyramid: {
@@ -480,8 +480,8 @@ export const PRODUCTS: Product[] = [
     photo: { src: `${BASE}/products/amber-oud-aqua-dubai.png`, w: 295, h: 600 },
     accord: {
       note: { es: "Bergamota", en: "Bergamot" },
-      image: `${BASE}/products/bergamot-plate.jpg`,
-      focus: { x: 0.62, y: 0.5, zoom: 1.15 },
+      image: `${BASE}/products/citrus-plate.jpg`,
+      focus: { x: 0.38, y: 0.5, zoom: 1.15 },
       also: { es: "con mandarina, melón y piña", en: "with mandarin, melon and pineapple" },
     },
     pyramid: {

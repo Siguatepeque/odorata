@@ -73,7 +73,7 @@ export const PRODUCTS: Product[] = [
     price: 2450,
     stock: 6,
     gender: "unisex",
-    photo: { src: `${BASE}/products/liquid-brun.png`, w: 356, h: 981 },
+    photo: { src: `${BASE}/products/liquid-brun.webp`, w: 356, h: 981 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
       image: `${BASE}/products/cinnamon-plate.jpg`,
@@ -111,7 +111,7 @@ export const PRODUCTS: Product[] = [
     price: 9950,
     stock: 2,
     gender: "unisex",
-    photo: { src: `${BASE}/products/althair.png`, w: 476, h: 986 },
+    photo: { src: `${BASE}/products/althair.webp`, w: 476, h: 986 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
       image: `${BASE}/products/cinnamon-plate.jpg`,
@@ -145,7 +145,7 @@ export const PRODUCTS: Product[] = [
     price: 2250,
     stock: 4,
     gender: "unisex",
-    photo: { src: `${BASE}/products/monarque.png`, w: 239, h: 471 },
+    photo: { src: `${BASE}/products/monarque.webp`, w: 239, h: 471 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
       image: `${BASE}/products/cinnamon-plate.jpg`,
@@ -182,7 +182,7 @@ export const PRODUCTS: Product[] = [
     price: 1450,
     stock: 7,
     gender: "men",
-    photo: { src: `${BASE}/products/island-vanilla-dunes.png`, w: 272, h: 600 },
+    photo: { src: `${BASE}/products/island-vanilla-dunes.webp`, w: 272, h: 600 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
       image: `${BASE}/products/cinnamon-plate.jpg`,
@@ -220,7 +220,7 @@ export const PRODUCTS: Product[] = [
     price: 1650,
     stock: 5,
     gender: "unisex",
-    photo: { src: `${BASE}/products/historic-sahara.png`, w: 266, h: 600 },
+    photo: { src: `${BASE}/products/historic-sahara.webp`, w: 266, h: 600 },
     accord: {
       note: { es: "Canela", en: "Cinnamon" },
       image: `${BASE}/products/cinnamon-plate.jpg`,
@@ -257,7 +257,7 @@ export const PRODUCTS: Product[] = [
     price: 1250,
     stock: 9,
     gender: "unisex",
-    photo: { src: `${BASE}/products/art-of-nature-ii.png`, w: 320, h: 600 },
+    photo: { src: `${BASE}/products/art-of-nature-ii.webp`, w: 320, h: 600 },
     accord: {
       note: { es: "Manzana", en: "Apple" },
       image: `${BASE}/products/apple-plate.jpg`,
@@ -297,7 +297,7 @@ export const PRODUCTS: Product[] = [
     price: 15900,
     stock: 0, // sold to order only, paid up front: needs the "por encargo" state (handoff.md)
     gender: "men",
-    photo: { src: `${BASE}/products/imagination.png`, w: 251, h: 600 },
+    photo: { src: `${BASE}/products/imagination.webp`, w: 251, h: 600 },
     accord: {
       note: { es: "Bergamota", en: "Bergamot" },
       image: `${BASE}/products/citrus-plate.jpg`,
@@ -329,7 +329,7 @@ export const PRODUCTS: Product[] = [
     price: 2345,
     stock: 3,
     gender: "unisex",
-    photo: { src: `${BASE}/products/hectic.png`, w: 204, h: 600 },
+    photo: { src: `${BASE}/products/hectic.webp`, w: 204, h: 600 },
     accord: {
       note: { es: "Bergamota", en: "Bergamot" },
       image: `${BASE}/products/citrus-plate.jpg`,
@@ -366,7 +366,7 @@ export const PRODUCTS: Product[] = [
     price: 2395,
     stock: 3,
     gender: "unisex",
-    photo: { src: `${BASE}/products/imaginary.png`, w: 241, h: 600 },
+    photo: { src: `${BASE}/products/imaginary.webp`, w: 241, h: 600 },
     accord: {
       note: { es: "Bergamota", en: "Bergamot" },
       image: `${BASE}/products/citrus-plate.jpg`,
@@ -403,7 +403,7 @@ export const PRODUCTS: Product[] = [
     price: 1795,
     stock: 4,
     gender: "men",
-    photo: { src: `${BASE}/products/marwa.png`, w: 269, h: 600 },
+    photo: { src: `${BASE}/products/marwa.webp`, w: 269, h: 600 },
     accord: {
       note: { es: "Bergamota", en: "Bergamot" },
       image: `${BASE}/products/citrus-plate.jpg`,
@@ -440,7 +440,7 @@ export const PRODUCTS: Product[] = [
     price: 1735,
     stock: 4,
     gender: "men",
-    photo: { src: `${BASE}/products/hawas-kobra.png`, w: 350, h: 600 },
+    photo: { src: `${BASE}/products/hawas-kobra.webp`, w: 350, h: 600 },
     accord: {
       note: { es: "Bergamota", en: "Bergamot" },
       image: `${BASE}/products/citrus-plate.jpg`,
@@ -477,7 +477,7 @@ export const PRODUCTS: Product[] = [
     price: 2185,
     stock: 3,
     gender: "unisex",
-    photo: { src: `${BASE}/products/amber-oud-aqua-dubai.png`, w: 295, h: 600 },
+    photo: { src: `${BASE}/products/amber-oud-aqua-dubai.webp`, w: 295, h: 600 },
     accord: {
       note: { es: "Bergamota", en: "Bergamot" },
       image: `${BASE}/products/citrus-plate.jpg`,
@@ -515,7 +515,7 @@ export const PRODUCTS: Product[] = [
     price: 1595,
     stock: 4,
     gender: "men",
-    photo: { src: `${BASE}/products/hawas-ice.png`, w: 374, h: 600 },
+    photo: { src: `${BASE}/products/hawas-ice.webp`, w: 374, h: 600 },
     accord: {
       note: { es: "Manzana", en: "Apple" },
       image: `${BASE}/products/apple-plate.jpg`,

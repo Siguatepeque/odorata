@@ -5,7 +5,7 @@ import { useEffect, useRef, useSyncExternalStore } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import FitText from "@/components/FitText";
-import { motionQuery, subscribeMotion } from "@/components/AccordStage";
+import { motionQuery, subscribeMotion } from "@/lib/motion";
 import { dict } from "@/lib/i18n";
 import { DELIVERY, PRODUCTS, lempiras, type Lang } from "@/lib/products";
 

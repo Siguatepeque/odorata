@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { SplitText } from "gsap/SplitText";
 import GlyphField, { LOOKS, noteLook } from "@/components/GlyphField";
-import { motionQuery, subscribeMotion } from "@/components/AccordStage";
+import { motionQuery, subscribeMotion } from "@/lib/motion";
 import { layoutRow, type Placed } from "@/lib/bottleRow";
 import { dict } from "@/lib/i18n";
 import { DELIVERY, LEVELS, PRODUCTS, alternativesTo, lempiras, product, type Lang, type Level } from "@/lib/products";

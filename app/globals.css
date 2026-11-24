@@ -353,6 +353,13 @@ ol {
   }
 }
 
+/* Slow phones (GlyphField's watchdog): re-blurring a live canvas every frame is the costliest thing here. */
+:root[data-lowfx] :is(.stage-notes, .stage-toggle, .specs-glass, .story-card) {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: rgb(255 255 255 / 0.92);
+}
+
 /* The panels are mostly clear, so the words carry their own soft halo. */
 .stage-notes,
 .specs-glass {

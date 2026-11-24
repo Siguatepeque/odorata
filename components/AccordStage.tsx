@@ -4,13 +4,8 @@ import { useState, useSyncExternalStore } from "react";
 import GlyphField, { noteLook } from "./GlyphField";
 import { dict } from "@/lib/i18n";
 import type { Lang, Product } from "@/lib/products";
+import { motionQuery, subscribeMotion } from "@/lib/motion";
 
-export const motionQuery = () => matchMedia("(prefers-reduced-motion: reduce)");
-export const subscribeMotion = (cb: () => void) => {
-  const mq = motionQuery();
-  mq.addEventListener("change", cb);
-  return () => mq.removeEventListener("change", cb);
-};
 
 // The product standing in front of its top note, a photograph run through the glyph field.
 export default function AccordStage({ product: p, lang, priority = false, top, notesHref = "#notas" }: { product: Product; lang: Lang; priority?: boolean; top?: React.ReactNode; notesHref?: string }) {

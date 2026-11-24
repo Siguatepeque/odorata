@@ -6,6 +6,7 @@ import { EffectComposer, RenderPass, EffectPass, BlendFunction } from "postproce
 import { AsciiEffect, InkBleedEffect, MemoryGrid } from "@niccolofanton/morphing-ascii-shader";
 import { PRESET, SOURCE_FRAG, SOURCE_VERT, patchDarkMode, type Grid, type Ascii } from "@/lib/glyph";
 import type { Focus } from "./GlyphField";
+import { HalfBleedEffect } from "./halfBleed";
 
 // Quality tier, shared by every field this visit: 0 full, 1 lite (1x pixels, 30fps, no glass blur),
 // 2 the plain photograph. Phones that can't hold the frame rate step down and stay down.
@@ -66,7 +67,9 @@ export function mountGlyphField(el: HTMLDivElement, { playRef, focusRef, loadRef
   pass.enabled = false;
   composer.addPass(pass);
   composer.addPass(new EffectPass(camera, ascii));
-  composer.addPass(new EffectPass(camera, bleed));
+  // Same bleed shader, run at half resolution: its output is a soft blur, measured near-identical
+  // (mean 1.25/255) for about half the frame cost.
+  composer.addPass(new EffectPass(camera, new HalfBleedEffect(bleed)));
 
   let imgAspect = 1.5;
   let ready = false;

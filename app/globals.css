@@ -194,9 +194,32 @@ ol {
   color: var(--ink);
 }
 
+/* Phones keep the way out of the story: the wordmark, Perfumes and the bag. How to buy lives in the footer. */
 @media (max-width: 560px) {
+  .top {
+    gap: 8px;
+  }
   .top-nav {
-    display: none; /* two pages: the phone header keeps the wordmark and the bag */
+    justify-content: end;
+  }
+  .top-nav a:not(:first-child) {
+    display: none;
+  }
+  .top-nav a {
+    color: var(--ink);
+  }
+}
+
+@media (max-width: 400px) {
+  .bag-word {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .bag-button {
+    padding: 0 6px;
   }
 }
 
@@ -2442,8 +2465,9 @@ ol {
   z-index: 1;
   top: 7%;
   left: var(--z0);
-  display: grid;
-  gap: 4px;
+  display: flex;
+  align-items: end;
+  gap: 12px 32px;
   opacity: 0;
   translate: 0 12px;
   transition: opacity 400ms var(--ease), translate 500ms var(--ease);
@@ -2453,6 +2477,11 @@ ol {
 [data-scene="original"] .story-tag {
   opacity: 1;
   translate: 0 0;
+}
+
+.story-tag p {
+  display: grid;
+  gap: 4px;
 }
 
 .story-tag span {
@@ -2471,7 +2500,31 @@ ol {
   letter-spacing: -0.04em;
   line-height: 0.9;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
   text-shadow: 0 0 18px rgb(255 255 255 / 0.9), 0 0 3px rgb(255 255 255 / 0.9);
+}
+
+/* The original stays in view, smaller, so the gap reads at a glance; a line draws through it once the drop lands. */
+.story-tag-orig strong {
+  position: relative;
+  font-size: clamp(26px, 2.8vw, 44px);
+}
+
+.story-tag-orig strong::after {
+  content: "";
+  position: absolute;
+  left: -3%;
+  right: -3%;
+  top: 52%;
+  height: 0.09em;
+  background: currentColor;
+  scale: 0 1;
+  transform-origin: left;
+  transition: scale 450ms var(--ease);
+}
+
+.story-tag.is-dropped .story-tag-orig strong::after {
+  scale: 1 1;
 }
 
 .story-bottle {
@@ -2507,9 +2560,12 @@ ol {
     left: auto;
     right: var(--gutter);
     top: 4%;
-    justify-items: end;
+    gap: 16px;
   }
-  .story-tag span {
-    justify-self: end;
+  .story-tag strong {
+    font-size: clamp(36px, 10vw, 56px);
+  }
+  .story-tag-orig strong {
+    font-size: clamp(20px, 5vw, 28px);
   }
 }

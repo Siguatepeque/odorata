@@ -14,7 +14,7 @@ export function BagButton({ lang }: { lang: Lang }) {
   const { count } = totals(useBag());
   return (
     <button type="button" className="bag-button" onClick={openBag} aria-haspopup="dialog">
-      {t.nav.bag} <span className="bag-count">{count}</span>
+      <span className="bag-word">{t.nav.bag}</span> <span className="bag-count">{count}</span>
     </button>
   );
 }

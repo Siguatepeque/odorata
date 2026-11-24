@@ -29,7 +29,7 @@ export default function Story({ lang }: { lang: Lang }) {
   const [step, setStep] = useState<Step>("hero");
   const steps = useRef<HTMLDivElement>(null);
   const stage = useRef<HTMLDivElement>(null);
-  const tag = useRef<HTMLParagraphElement>(null);
+  const tag = useRef<HTMLDivElement>(null);
   const reduced = useSyncExternalStore(subscribeMotion, () => motionQuery().matches, () => false);
 
   // One gesture, one step: inside the story a wheel tick, a swipe or an arrow key moves exactly one
@@ -147,24 +147,28 @@ export default function Story({ lang }: { lang: Lang }) {
     return () => void tl.progress(1).kill();
   }, [step]);
 
-  // The price drop: the original's price, then it falls to what its alternatives start at.
+  // The price drop: the original's price stays up, and beside it the alternatives' price falls from the
+  // original's to what they start at; then the original is struck through. Both read at a glance.
   useEffect(() => {
     const el = tag.current!;
     const o = product(step);
     const alts = o ? alternativesTo(o.handle) : [];
     if (!o || !alts.length) return;
     const from = Math.min(...alts.map((a) => a.price));
-    const [k, v] = [el.children[0], el.children[1]];
+    const [[ok, ov], [ak, av]] = [...el.children].map((c) => [...c.children]);
     const n = { v: o.price };
-    k.textContent = lang === "es" ? "El original" : "The original";
-    v.textContent = lempiras(o.price);
+    el.classList.remove("is-dropped");
+    ok.textContent = lang === "es" ? "El original" : "The original";
+    ov.textContent = lempiras(o.price);
+    ak.textContent = lang === "es" ? "Alternativas desde" : "Alternatives from";
+    av.textContent = lempiras(o.price);
     const tl = gsap.timeline({ delay: 0.9 });
     tl.to(n, {
       v: from,
       duration: 1.3,
       ease: "power3.inOut",
-      onStart: () => void (k.textContent = lang === "es" ? "Alternativas desde" : "Alternatives from"),
-      onUpdate: () => void (v.textContent = lempiras(Math.round(n.v / 5) * 5)),
+      onUpdate: () => void (av.textContent = lempiras(Math.round(n.v / 5) * 5)),
+      onComplete: () => el.classList.add("is-dropped"),
     });
     return () => void tl.kill();
   }, [step, lang]);
@@ -201,10 +205,16 @@ export default function Story({ lang }: { lang: Lang }) {
     <div className="story">
       <div className="story-stage" ref={stage} aria-hidden="true" data-scene={on ? "original" : "flag"}>
         <GlyphField image={field.image} focus={field.focus} playing={!reduced} look={(on && noteLook(on.accord.note)) || LOOKS.flag} />
-        <p className="story-tag" ref={tag}>
-          <span />
-          <strong />
-        </p>
+        <div className="story-tag" ref={tag}>
+          <p className="story-tag-orig">
+            <span />
+            <strong />
+          </p>
+          <p>
+            <span />
+            <strong />
+          </p>
+        </div>
         {ORIGINALS.map((h) => {
           const o = product(h)!;
           const alts = alternativesTo(h);

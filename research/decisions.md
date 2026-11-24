@@ -20,15 +20,54 @@ Buy ADG EDT 100 and ADG EDP 75 together as the 2-bottle test import, once GBox c
 
 ## Purchase order
 
-| Priority | Bottle | Why | Landed (L) |
-|---|---|---|---|
-| 1 | ADG EDT 100 ml | Ratio 2.28 / 1.82 without coupon; 26,338 votes | about 2,040 |
-| 2 | ADG EDP 75 ml (refillable) | Ratio 2.33 / 1.86 without coupon | about 2,040 |
-| 3 | Profondo EDP 100 ml | Ratio 1.75 / 1.40: only if the coupon holds after 5 December | about 2,860 |
-| Later | Profondo Parfum, Absolu (Privé has neither) | One each as an exclusive test, once ADG sells; priced against Privé's Parfum, unverified | about 3,200 / 4,150 |
-| Skip | ADG Parfum 100, Elixir 50 | Fail the gate | n/a |
+**Superseded 2026-11-23 (later session): buy in clusters, the way the site works.** One original plus the alternatives inspired by it, so every original's dupe widget has something to show. Coupon risk applies to restocking, not to a bottle bought while the coupon is live.
 
-Everything else on the earlier seven-bottle list (La Vie Est Belle, Most Wanted, Eros EDP, Stronger With You, Good Girl) depends on the coupon. Decide after the 5 December re-read ([[signals]]).
+**Pricing rule (proposed, not yet confirmed by the owner):** a bottle Privé stocks sells at Privé − 10%. A bottle Privé lacks sells at Privé's median 100 ml price for that house (Lattafa L1,270, Armaf 1,615, Afnan 1,380, Fragrance World 1,390, Maison Alhambra 1,070, Al Haramain 1,565). Profit = sell − landed − card − L145.
+
+**Finding:** at local dupe prices, a dupe nets L70–440. Freight (US$5 = L134) is most of the gap. Originals carry the profit; dupes carry the widget and traffic. The site's placeholder dupe prices (Liquid Brun L2,450) sit above Privé's L1,670.
+
+| Cluster | Bottle | Landed L | Sell L | Profit L |
+|---|---|---|---|---|
+| Althaïr (stocked) | Althaïr 125 (Venba) | 6,729 | 9,900 | 2,596 |
+| | Liquid Brun ×2 | 851 | 1,505 | 436 each |
+| | Lion's Club Monarque | 1,080 | 1,615 | 312 |
+| | Island Vanilla Dunes (US$30.99) | 1,023 | 1,450 | 211 |
+| | Historic Sahara | 994 | 1,380 | 173 |
+| Erba Pura (stocked; coupon) | Xerjoff Erba Pura 100 | 5,196 | 7,805 | 2,122 |
+| | Al Haramain Amber Oud Gold Edition 120 ml (US$43.99; Privé sold out) | 1,395 | 1,850 | 222 |
+| SWY Intensely (stocked; coupon) | SWY Intensely 100 | 2,804 | 4,005 | 877 |
+| Angels' Share (named only) | Khamrah Qahwa (Privé sold out) | 994 | 1,550 | 336 |
+
+About L21,800 landed and L7,700 profit. Jomashop prices read live 11-23 in the browser. Proud of You Intense and Philos Pura EDP are not sold at Jomashop: dropped. Second wave (named-only originals, Privé lacks every dupe): Maison Asrar Vanguard → Absolu Aventus (+288), Belgravia → Bal d'Afrique Absolu (+288), Rayhaan Nocturno Elixir → Bleu de Chanel L'Exclusif (US$17.99 after $10 coupon, +584).
+
+**Skip:** Art of Nature II (US$44.95: loses L361), Philos Pura (loses money at Maison Alhambra's L1,070), Khamrah (US$34.99: loses L76 at Lattafa's rate), Club de Nuit Intense (+125). Designer bottles with no dupe cluster (ADG, La Vie Est Belle) still pay as standalones; see the earlier analysis.
+
+## Imagination cluster (2026-11-23, read live in the browser)
+
+Owner's direction (handoff.md): list Imagination as the showcase, sell it to order with full payment up front, never stock it. Dupes clear 15% at Privé −10% or match Privé.
+
+| Bottle | Source, price | Privé | Sell L | Landed L | Margin, no coupon | With coupon | Customs risk case | Level (proposed) |
+|---|---|---|---|---|---|---|---|---|
+| LV Imagination 100 ml | louisvuitton.com US$360 (in stock, free US delivery) | not listed | 15,900 | 10,457 | 29% | n/a | 8% | original |
+| Bujairami Hectic extrait 100 | Jomashop $54.99 ($44.99 w/ $10 coupon) | not carried | 2,345 | 1,711 | 16% | 28% | −5% | Casi idéntico |
+| Montagne Imaginary EDP **50 ml** | montagneparfums.com $50 (shipping not read) | not carried | 2,395 | 1,568–1,782 | 17% free ship / 15% at $8 ship | n/a | −4% | Casi idéntico |
+| Arabiyat Prestige Marwa EDP 100 | Jomashop $39.99 ($29.99 w/ coupon) | not carried | 1,795 | 1,281 | 16% | 32% | −5% | Mismo ADN |
+| Rasasi Hawas Kobra EDP 100 | Jomashop $34.99 | L1,925 in stock | 1,735 (Privé −10%) | 1,137 | 21% | n/a | 3% | Mismo estilo |
+| Al Haramain Amber Oud Aqua Dubai extrait 100 | Jomashop $49.99 | L2,185, out of stock | 2,185 (matches Privé; −10% gives 8%) | 1,568 | 17% | n/a | −4% | Mismo estilo |
+| Rasasi Hawas Ice EDP 100 (standalone, owner's pick) | Jomashop $33.99 ($23.99 w/ coupon) | not listed | 1,595 | 1,109 | 17% | 35% | −3% | none |
+
+**Fragrantica "reminds me of" votes on Imagination (thumbs up / thumbs down, 2026-11-23):** Aqua Dubai 1.1k/980, Zara Sunrise On The Red Sand Dunes 1.1k/1.1k, Marwa 1k/806, Hawas Kobra 833/824, Art of Arabia I 458/817, Hectic 398/709, Fragrance World Jacques Yves Imaginari 50/99. Montagne Imaginary isn't on the list. Reviewers on the Hectic and Marwa pages still call them among the closest, so the levels above stand; the votes measure popularity more than closeness. Zara isn't sold at discounters: skipped.
+
+**Hawas Ice** isn't an Imagination alternative (apple, plum, star anise). Voters compare it to Rasasi Hawas for Him (778/80) and Paco Rabanne Invictus Aqua 2018 (433/78). It could anchor a Hawas or Invictus cluster later.
+
+**Notes now come from Fragrantica** (owner's request). This corrected Marwa: its real pyramid is bergamot, lemon, orange / ginger, cinnamon, neroli / ambroxan, guaiac, frankincense, black tea, released 2025. The Parfumo version (petitgrain, geranium) was the scrambled data.
+
+- **Imagination is US$360, not the handoff's US$440 guess.** At L15,900 the margin is 29% base and 8% if customs charges; 15% needs only L13,141 without customs. Kept near the handoff's L16,000 because the bottle is prepaid, made to order and carries the customs risk alone. Aventus at Privé is L13,620 for comparison.
+- **Levels are research proposals; the owner decides.** Scento's ranking (a retailer, affiliate-shaped) is the main reviewer source: Hectic "pure DNA match", Marwa "similar style", Kobra "bolder reinterpretation, green tea". Hectic, Imaginary and Imagination share an identical published pyramid. Imaginary: 4.75/5 from 640 reviews on Montagne's own site, owner's pick.
+- **Dropped:** Essence de Blanc (Fragrance World/French Avenue; sources disagree on its notes), Khadlaj Karus Blu Spice (82–88% similarity per Scento), Lattafa Art of Arabia II (no reviewer link found beyond one blog).
+- **Every dupe loses money if customs charges.** The test import settles it before any restock.
+- Parfumo started returning scrambled note lists (made-up note names) after a few quick page reads. Only notes that a second source confirms (Scento, the maker's page, or a normally rendered page) went into the catalog.
+- Still to read: LV's per-customer limit and whether it ships to the GBox address (the US site offers free standard delivery); Montagne's shipping charge (shown only at checkout).
 
 ## Only the owner can settle
 
@@ -39,7 +78,7 @@ Everything else on the earlier seven-bottle list (La Vie Est Belle, Most Wanted,
 
 ## Not settled in the research
 
-Jomashop coupon durability; demand in Honduras (no sales data); Louis Vuitton Imagination (strong demand, no legitimate discounted source); YSL Libre and MYSLF (Privé out of stock; Venba out; no local benchmark); Olfactory Factory (its domain is parked, find the real URL).
+Jomashop coupon durability; demand in Honduras (no sales data); Louis Vuitton Imagination (no discounted source; listed to order, see above); YSL Libre and MYSLF (Privé out of stock; Venba out; no local benchmark); Olfactory Factory (its domain is parked, find the real URL).
 
 ## Next research steps
 

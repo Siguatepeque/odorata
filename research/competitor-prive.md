@@ -10,7 +10,7 @@ Price benchmark only; we don't copy its assortment ([[README]]). Store read as H
 
 ## Catalog statistics (corrected)
 
-Full snapshot: `data/prive-2026-11-23.csv`, 3,826 in-stock fragrance SKUs, 216 brands. 38% on sale, average −17.4%. Price held (no discount): JPG, Carolina Herrera, D&G, Paco Rabanne, Kenzo, Burberry, Marc Jacobs. Mostly discounted: Guerlain, Bvlgari, Jimmy Choo, Maison Alhambra (−26%), Zimaya (−28%). Never listed: Chanel, Dior, Diptyque, French Avenue, Rayhaan, Maison Asrar, Paris Corner. Out of stock: Althaïr, Percival, YSL MYSLF and all Libre, Mojave Ghost, Vibrato, Tobacco Vanille. Aventus is in stock (100 ml L13,620). Method and pitfalls in [[sources]].
+Full snapshot: `data/prive-2026-11-23.csv`, 3,826 in-stock fragrance SKUs, 216 brands. 38% on sale, average −17.4%. Price held (no discount): JPG, Carolina Herrera, D&G, Paco Rabanne, Kenzo, Burberry, Marc Jacobs. Mostly discounted: Guerlain, Bvlgari, Jimmy Choo, Maison Alhambra (−26%), Zimaya (−28%). Never listed: Chanel, Dior, Diptyque, Rayhaan, Maison Asrar, Paris Corner. Liquid Brun IS listed (L1,670, brand "Fragrance World"). Out of stock: Althaïr, Percival, YSL MYSLF and all Libre, Mojave Ghost, Vibrato, Tobacco Vanille. Aventus is in stock (100 ml L13,620). Method and pitfalls in [[sources]].
 
 ## Gaps
 

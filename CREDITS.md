@@ -24,6 +24,22 @@ Kept in the repo, not shown on the site. CC BY and CC BY-SA images need this att
 - olibano: File:Olibanum resin.jpg by Peter Presslein, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Olibanum_resin.jpg
 - rosa: File:Pink-Rose-Sitia-Crete-Greece.jpg by Petro Stelte, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Pink-Rose-Sitia-Crete-Greece.jpg
 - cedro: File:Deodar section.jpg by Shyamal, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Deodar_section.jpg
+- cidra: File:Citron on its parts.jpg by Meir izchak rosh, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Citron_on_its_parts.jpg (labels removed)
+- naranja: File:Orange sliced on white background.jpg by Paolo Neo, Public domain, https://commons.wikimedia.org/wiki/File:Orange_sliced_on_white_background.jpg
+- jengibre: File:Ginger rhizomes.jpg by Judethedeus, CC0, https://commons.wikimedia.org/wiki/File:Ginger_rhizomes.jpg
+- neroli: File:Bitter orange - Citrus aurantium 01.JPG by Zeynel Cebeci, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Bitter_orange_-_Citrus_aurantium_01.JPG
+- te-negro: File:Ceylon black tea leaves.jpg by Patrick Kolencherry, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Ceylon_black_tea_leaves.jpg
+- te-verde: File:Green tea 3 appearances.jpg by Alessandro Martini, CC0, https://commons.wikimedia.org/wiki/File:Green_tea_3_appearances.jpg
+- petitgrain: File:Citrus aurantium leaves.JPG by Dinkum, CC0, https://commons.wikimedia.org/wiki/File:Citrus_aurantium_leaves.JPG
+- limon: File:Lemon Fruit.jpg by ben dalton from leeds, uk, CC BY 2.0, https://commons.wikimedia.org/wiki/File:Lemon_Fruit.jpg
+- notas-verdes: File:Fresh green maple leaves (7185025589).jpg by Takashi Hososhima from Tokyo, Japan, CC BY-SA 2.0, https://commons.wikimedia.org/wiki/File:Fresh_green_maple_leaves_(7185025589).jpg
+- melon: File:Cantaloupe (4966163672).jpg by Karen and Brad Emerson, CC BY 2.0, https://commons.wikimedia.org/wiki/File:Cantaloupe_(4966163672).jpg
+- grosella-negra: File:Blackcurrant.jpg by Paolo Neo, Public domain, https://commons.wikimedia.org/wiki/File:Blackcurrant.jpg
+- pina: File:Pineapple on white.jpg by Rhododendrites, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Pineapple_on_white.jpg
+- galbano: File:Köhler Ferula gummosa.jpg by Unknown author, Public domain, https://commons.wikimedia.org/wiki/File:K%C3%B6hler_Ferula_gummosa.jpg
+- anis: File:Illicium verum20170511 7551.jpg by Bff, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Illicium_verum20170511_7551.jpg
+- ciruela: File:Prunus domestica ripe fruits 1.jpg by Salil Kumar Mukherjee, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Prunus_domestica_ripe_fruits_1.jpg
+- musgo: File:Moss Macro Shot (252156109).jpeg by Nina La, CC BY 3.0, https://commons.wikimedia.org/wiki/File:Moss_Macro_Shot_(252156109).jpeg
 
 ## public/products
 
@@ -33,3 +49,7 @@ Kept in the repo, not shown on the site. CC BY and CC BY-SA images need this att
 - apple-plate.jpg: Wikimedia Commons File:Red Apple.jpg by Abhijit Tembhekar, CC BY 2.0 (placed on white)
 - monarque.png: product photo from Cosmetify. Placeholder; replace with your own photography before going live.
 - island-vanilla-dunes.png, historic-sahara.png, art-of-nature-ii.png: product photos from Notino. Placeholders; replace with your own photography before going live.
+- bergamot-plate.jpg: File:Bergamot orange - whole and slice.jpg by Ivar Leidus, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Bergamot_orange_-_whole_and_slice.jpg (cut out and placed on white)
+- hawas-kobra.png, hawas-ice.png, amber-oud-aqua-dubai.png, marwa.png: product photos from Notino. Placeholders; replace with your own photography before going live.
+- hectic.png, imagination.png: product photos from Fragrantica. Placeholders; replace with your own photography before going live.
+- imaginary.png: product photo from Montagne Parfums. Placeholder; replace with your own photography before going live.

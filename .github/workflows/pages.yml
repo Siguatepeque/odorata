@@ -8,10 +8,11 @@ permissions:
   pages: write
   id-token: write
 concurrency: { group: pages, cancel-in-progress: true }
+# Build and deploy are separate jobs, as in GitHub's Pages starters: deploying in the same job looked the
+# artifact up a fraction of a second after upload, before GitHub listed it, and failed with "no artifacts".
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment: { name: github-pages, url: "${{ steps.d.outputs.page_url }}" }
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -21,5 +22,10 @@ jobs:
       - run: rm proxy.ts && GITHUB_PAGES=1 npx next build
       - uses: actions/upload-pages-artifact@v5
         with: { path: out }
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: { name: github-pages, url: "${{ steps.d.outputs.page_url }}" }
+    steps:
       - id: d
         uses: actions/deploy-pages@v5

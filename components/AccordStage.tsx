@@ -1,158 +1,27 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import * as THREE from "three";
-import { EffectComposer, RenderPass, EffectPass, BlendFunction } from "postprocessing";
-import { AsciiEffect, InkBleedEffect, MemoryGrid } from "@niccolofanton/morphing-ascii-shader";
-import { PRESET, SOURCE_FRAG, SOURCE_VERT, patchDarkMode, type Grid, type Ascii } from "@/lib/glyph";
+import { useState, useSyncExternalStore } from "react";
+import GlyphField, { noteLook } from "./GlyphField";
 import { dict } from "@/lib/i18n";
 import type { Lang, Product } from "@/lib/products";
 
-const motionQuery = () => matchMedia("(prefers-reduced-motion: reduce)");
-const subscribeMotion = (cb: () => void) => {
+export const motionQuery = () => matchMedia("(prefers-reduced-motion: reduce)");
+export const subscribeMotion = (cb: () => void) => {
   const mq = motionQuery();
   mq.addEventListener("change", cb);
   return () => mq.removeEventListener("change", cb);
 };
 
-// The product standing in front of its top note. The note is a photograph run through the
-// lab's glyph pipeline (still -> per-cell memory -> glyph morph -> ink bleed); a slow drift
-// over the still keeps the cells morphing, and the pointer leans the field for depth.
-export default function AccordStage({ product: p, lang, priority = false, top }: { product: Product; lang: Lang; priority?: boolean; top?: React.ReactNode }) {
+// The product standing in front of its top note, a photograph run through the glyph field.
+export default function AccordStage({ product: p, lang, priority = false, top, notesHref = "#notas" }: { product: Product; lang: Lang; priority?: boolean; top?: React.ReactNode; notesHref?: string }) {
   const t = dict(lang);
-  const host = useRef<HTMLDivElement>(null);
-  const playRef = useRef(true);
   const reduced = useSyncExternalStore(subscribeMotion, () => motionQuery().matches, () => false);
   const [picked, setPicked] = useState<boolean | null>(null);
   const playing = picked ?? !reduced;
-  useEffect(() => {
-    playRef.current = playing;
-  }, [playing]);
-
-  useEffect(() => {
-    const el = host.current!;
-    let renderer: THREE.WebGLRenderer;
-    try {
-      renderer = new THREE.WebGLRenderer({ antialias: false });
-    } catch {
-      el.dataset.fallback = "true"; // CSS shows the plain photograph instead
-      return;
-    }
-    const small = matchMedia("(max-width: 768px)").matches;
-    const dpr = () => Math.min(devicePixelRatio || 1, 2);
-    renderer.setPixelRatio(dpr());
-    renderer.domElement.setAttribute("aria-hidden", "true");
-    el.appendChild(renderer.domElement);
-
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-    const sourceRT = new THREE.WebGLRenderTarget(2, 2, { depthBuffer: false });
-    const sourceMat = new THREE.ShaderMaterial({
-      vertexShader: SOURCE_VERT,
-      fragmentShader: SOURCE_FRAG,
-      uniforms: { uVideo: { value: null }, uKeyBlack: { value: 0 } },
-    });
-    const sourceScene = new THREE.Scene();
-    sourceScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), sourceMat));
-
-    const ascii = new AsciiEffect({ ...PRESET, useMemory: true, edges: false }) as Ascii;
-    patchDarkMode(ascii); // keeps the shader identical to the lab's; this page stays light
-    const bleed = new InkBleedEffect({ bleed: 2, radius: 29, blur: 1 });
-    bleed.blendMode.blendFunction = BlendFunction.MULTIPLY;
-    const memory = new MemoryGrid(renderer, sourceRT.texture, { rate: PRESET.morphRate }) as Grid;
-    const composer = new EffectComposer(renderer, { depthBuffer: false });
-    const pass = new RenderPass(new THREE.Scene(), camera);
-    pass.enabled = false;
-    composer.addPass(pass);
-    composer.addPass(new EffectPass(camera, ascii));
-    composer.addPass(new EffectPass(camera, bleed));
-
-    let imgAspect = 1.5;
-    let ready = false;
-    new THREE.TextureLoader().load(p.accord.image, (tex) => {
-      tex.colorSpace = THREE.SRGBColorSpace;
-      const img = tex.image as HTMLImageElement;
-      imgAspect = img.width / img.height;
-      sourceRT.setSize(img.width, img.height);
-      sourceMat.uniforms.uVideo.value = tex;
-      renderer.setRenderTarget(sourceRT);
-      renderer.render(sourceScene, camera);
-      renderer.setRenderTarget(null);
-      ready = true;
-    });
-
-    const buf = new THREE.Vector2();
-    const resize = () => {
-      const { clientWidth: w, clientHeight: h } = el;
-      if (!w || !h) return;
-      renderer.setPixelRatio(dpr());
-      renderer.setSize(w, h);
-      composer.setSize(w, h);
-      ascii.cellSize = Math.max(1, Math.round((small ? PRESET.gridCss * 0.45 : PRESET.gridCss * 0.66) * dpr()));
-      renderer.getDrawingBufferSize(buf);
-      memory.setSize(buf.x, buf.y, ascii.cellSize);
-      ascii.setGridSize(memory.gridW, memory.gridH);
-    };
-    const ro = new ResizeObserver(resize);
-    ro.observe(el);
-    resize();
-
-    // Pointer lean, eased; touch leaves it centred.
-    const lean = { x: 0, y: 0, tx: 0, ty: 0 };
-    const onMove = (e: PointerEvent) => {
-      if (e.pointerType !== "mouse") return;
-      const r = el.getBoundingClientRect();
-      lean.tx = ((e.clientX - r.left) / r.width - 0.5) * 2;
-      lean.ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
-    };
-    addEventListener("pointermove", onMove);
-
-    let visible = true;
-    const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting));
-    io.observe(el);
-
-    let time = 0;
-    let raf = 0;
-    const clock = new THREE.Clock();
-    const tick = () => {
-      raf = requestAnimationFrame(tick);
-      const dt = clock.getDelta();
-      if (!visible || !ready) return;
-      if (playRef.current) time += dt;
-      lean.x += (lean.tx - lean.x) * Math.min(1, dt * 3);
-      lean.y += (lean.ty - lean.y) * Math.min(1, dt * 3);
-      // Cover-fit the still, then drift and breathe inside it.
-      const r = imgAspect / (el.clientWidth / el.clientHeight);
-      const f = p.accord.focus;
-      const zoom = f.zoom * (1 + 0.07 * Math.sin(time * 0.25));
-      const sx = (r >= 1 ? 1 / r : 1) / zoom;
-      const sy = (r >= 1 ? 1 : r) / zoom;
-      const ox = f.x - 0.5 + 0.05 * Math.sin(time * 0.3) + lean.x * 0.012;
-      const oy = 0.5 - f.y + 0.035 * Math.cos(time * 0.23) - lean.y * 0.012; // texture v runs bottom-up
-      memory.setVideoTransform(sx, sy, ox, oy);
-      const m = memory.update(dt);
-      if (m) ascii.memoryTexture = m;
-      composer.render(dt);
-    };
-    tick();
-
-    return () => {
-      cancelAnimationFrame(raf);
-      ro.disconnect();
-      io.disconnect();
-      removeEventListener("pointermove", onMove);
-      memory.dispose();
-      composer.dispose();
-      sourceRT.dispose();
-      sourceMat.dispose();
-      (sourceMat.uniforms.uVideo.value as THREE.Texture | null)?.dispose();
-      renderer.dispose();
-      renderer.domElement.remove();
-    };
-  }, [p.accord]);
 
   return (
     <figure className="stage">
-      <div ref={host} className="stage-field" style={{ "--still": `url(${p.accord.image})` } as React.CSSProperties} />
+      <GlyphField image={p.accord.image} focus={p.accord.focus} playing={playing} look={noteLook(p.accord.note)} />
       {p.photo ? (
         // eslint-disable-next-line @next/next/no-img-element -- transparent cut-out at its natural size
         <img
@@ -166,7 +35,7 @@ export default function AccordStage({ product: p, lang, priority = false, top }:
       ) : (
         <p className="stage-nophoto">{lang === "es" ? "Foto del producto pendiente" : "Product photo pending"}</p>
       )}
-      <a className="stage-notes" href="#notas">
+      <a className="stage-notes" href={notesHref}>
         <span>
           <span className="stage-tier">{t.stage.top}</span>
           <strong>{p.accord.note[lang]}</strong>

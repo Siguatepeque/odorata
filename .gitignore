@@ -47,3 +47,7 @@ next-env.d.ts
 /.impeccable/hook.cache.json
 /.impeccable/questions/
 /.impeccable/review/
+
+# local labs: never committed, so never on GitHub Pages
+/app/[[]lang]/lab/
+/app/lab/

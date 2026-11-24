@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 
 // Sets one line of display type to exactly the width of its column.
 // Reacts to width changes only: the height it causes must not refit it.
-export default function FitText({ children, className }: { children: string; className?: string }) {
+export default function FitText({ children, className, id, as: Tag = "h1" }: { children: string; className?: string; id?: string; as?: "h1" | "h2" | "p" }) {
   const box = useRef<HTMLHeadingElement>(null);
   const text = useRef<HTMLSpanElement>(null);
 
@@ -26,8 +26,8 @@ export default function FitText({ children, className }: { children: string; cla
   }, [children]);
 
   return (
-    <h1 ref={box} className={`fit ${className ?? ""}`}>
+    <Tag ref={box} id={id} className={`fit ${className ?? ""}`}>
       <span ref={text}>{children}</span>
-    </h1>
+    </Tag>
   );
 }

@@ -373,7 +373,7 @@ function Panel({ lang, s, act, idPrefix }: { lang: Lang; s: State; act: Actions;
   );
 }
 
-function Card({ p, lang }: { p: Product; lang: Lang }) {
+export function Card({ p, lang }: { p: Product; lang: Lang }) {
   const t = T[lang];
   const original = p.inspiredBy && product(p.inspiredBy.handle);
   const alts = alternativesTo(p.handle);

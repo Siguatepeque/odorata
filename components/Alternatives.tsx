@@ -31,7 +31,7 @@ const Arrow = () => (
 );
 
 /** One perfume as a hairline row: name and house on the left, price on the right, then the arrow. */
-function Row({ p, lang, detail, saving, note }: { p: Product; lang: Lang; detail?: string; saving?: number; note?: string }) {
+export function Row({ p, lang, detail, saving, note }: { p: Product; lang: Lang; detail?: string; saving?: number; note?: string }) {
   const t = T[lang];
   return (
     <Link href={`/${lang}/p/${p.handle}`} className="alt-row">

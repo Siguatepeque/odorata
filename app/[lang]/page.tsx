@@ -1,21 +1,30 @@
 import Link from "next/link";
-import { dict } from "@/lib/i18n";
-import { DELIVERY, lempiras, type Lang } from "@/lib/products";
-import Catalog from "@/components/Catalog";
+import { PRODUCTS, type Lang } from "@/lib/products";
+import { Card } from "@/components/Catalog";
+import Story from "@/components/Story";
 
-export default async function Home({ params }: PageProps<"/[lang]">) {
+export default async function Landing({ params }: PageProps<"/[lang]">) {
   const lang = (await params).lang as Lang;
-  const t = dict(lang);
+  const es = lang === "es";
 
   return (
-    <section className="catalog" aria-labelledby="catalog-h">
-      <h1 id="catalog-h" className="section-title">
-        {t.nav.fragrances}
-      </h1>
-      <Catalog lang={lang} />
-      <p className="reassure">
-        {t.terms.short(lempiras(DELIVERY.city.fee))} <Link href={`/${lang}/como-comprar`}>{t.terms.link}</Link>
-      </p>
-    </section>
+    <article className="home">
+      <Story lang={lang} />
+      <section className="home-section" aria-labelledby="sel-h">
+        <h2 id="sel-h" className="section-title">
+          {es ? "La selección" : "The selection"}
+        </h2>
+        <ul className="catalog-grid">
+          {PRODUCTS.filter((p) => p.stock > 0)
+            .slice(0, 4)
+            .map((p) => (
+              <Card key={p.handle} p={p} lang={lang} />
+            ))}
+        </ul>
+        <Link href={`/${lang}/perfumes`} className="btn btn-line home-all">
+          {es ? `Ver los ${PRODUCTS.length} perfumes` : `See all ${PRODUCTS.length} fragrances`}
+        </Link>
+      </section>
+    </article>
   );
 }

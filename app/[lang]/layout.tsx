@@ -33,7 +33,7 @@ export default async function Layout({ children, params }: LayoutProps<"/[lang]"
             Odorata
           </Link>
           <nav className="top-nav" aria-label={lang === "es" ? "Principal" : "Main"}>
-            <Link href={`/${lang}`}>{t.nav.fragrances}</Link>
+            <Link href={`/${lang}/perfumes`}>{t.nav.fragrances}</Link>
             <Link href={`/${lang}/como-comprar`}>{t.nav.how}</Link>
           </nav>
           <BagButton lang={lang} />
@@ -44,7 +44,7 @@ export default async function Layout({ children, params }: LayoutProps<"/[lang]"
             Odorata
           </Link>
           <nav className="foot-nav" aria-label={lang === "es" ? "Pie de página" : "Footer"}>
-            <Link href={`/${lang}`}>{t.nav.fragrances}</Link>
+            <Link href={`/${lang}/perfumes`}>{t.nav.fragrances}</Link>
             <Link href={`/${lang}/como-comprar`}>{t.nav.how}</Link>
           </nav>
           <p>

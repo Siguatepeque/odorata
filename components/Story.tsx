@@ -162,11 +162,11 @@ export default function Story({ lang }: { lang: Lang }) {
     ov.textContent = lempiras(o.price);
     ak.textContent = lang === "es" ? "Alternativas desde" : "Alternatives from";
     av.textContent = lempiras(o.price);
-    const tl = gsap.timeline({ delay: 0.9 });
+    const tl = gsap.timeline({ delay: 0.45 });
     tl.to(n, {
       v: from,
-      duration: 1.3,
-      ease: "power3.inOut",
+      duration: 0.7,
+      ease: "power2.out",
       onUpdate: () => void (av.textContent = lempiras(Math.round(n.v / 5) * 5)),
       onComplete: () => el.classList.add("is-dropped"),
     });

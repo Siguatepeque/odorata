@@ -2240,9 +2240,6 @@ ol {
 
 
 .story-stage {
-  /* the free strip right of the card, where the bottles live on desktop */
-  --z0: calc(var(--gutter) + 560px);
-  --z1: calc(100% - 64px);
   position: sticky;
   top: 60px;
   height: calc(100svh - 60px);
@@ -2360,16 +2357,8 @@ ol {
     height 520ms var(--ease);
 }
 
-.story-orig {
-  --b: 9%;
-  --x: calc(var(--z0) + 70px);
-  --h: 56%;
-}
-
+/* --x, --h and --b are measured per bottle in Story (lib/bottleRow): the row fits the space its card leaves. */
 .story-alt {
-  --b: 12%;
-  --x: calc(var(--z0) + 210px + (var(--z1) - var(--z0) - 210px) * var(--fl));
-  --h: 40%;
   transition-delay: calc(var(--i) * 35ms);
 }
 
@@ -2409,24 +2398,10 @@ ol {
   opacity: 1;
 }
 
-@media (max-width: 899px) {
-  .story-orig {
-    --b: 46%;
-    --x: 15%;
-    --h: 32%;
-  }
-  .story-alt {
-    --b: 47%;
-    --x: calc(31% + var(--i) * 14.2%);
-    --h: 25%;
-  }
-}
-
-/* The group labels need room; on narrower screens the card text names the levels instead. */
-@media (max-width: 1279px) {
-  .story-alt figcaption {
-    display: none;
-  }
+/* A group's label shows only where the layout measured room for it; elsewhere the card text names the
+   levels. Hidden, not removed, so its width can still be measured. */
+.story-alt:not([data-label]) figcaption {
+  visibility: hidden;
 }
 
 @media (min-width: 900px) {
@@ -2464,9 +2439,9 @@ ol {
   position: absolute;
   z-index: 1;
   top: 7%;
-  left: var(--z0);
+  left: var(--row-left, calc(var(--gutter) + 500px));
   display: flex;
-  align-items: end;
+  align-items: start;
   gap: 12px 32px;
   opacity: 0;
   translate: 0 12px;

@@ -7,6 +7,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { SplitText } from "gsap/SplitText";
 import GlyphField, { LOOKS, noteLook } from "@/components/GlyphField";
 import { motionQuery, subscribeMotion } from "@/components/AccordStage";
+import { layoutRow, type Placed } from "@/lib/bottleRow";
 import { dict } from "@/lib/i18n";
 import { DELIVERY, LEVELS, PRODUCTS, alternativesTo, lempiras, product, type Lang, type Level } from "@/lib/products";
 
@@ -187,6 +188,60 @@ export default function Story({ lang }: { lang: Lang }) {
     return () => removeEventListener("pointermove", move);
   }, []);
 
+  // Each original's bottles stand in the space its card leaves: beside the card on wide screens, between
+  // the price and the card on phones. Measured, not assumed, and redone whenever the window, the fonts or
+  // a card change size, so no width stacks bottles on top of each other or under the card.
+  useEffect(() => {
+    const st = stage.current!;
+    const sx = steps.current!;
+    const layout = () => {
+      const S = st.getBoundingClientRect();
+      if (!S.width) return;
+      const wide = matchMedia("(min-width: 900px)").matches; // the CSS breakpoint
+      const gutter = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--gutter")) || 16;
+      const t = tag.current!;
+      const top = t.offsetTop + t.offsetHeight + (wide ? 28 : 16);
+      st.querySelectorAll<HTMLElement>("[data-cluster]").forEach((cl) => {
+        const h = cl.dataset.cluster!;
+        const step = sx.querySelector<HTMLElement>(`[data-step="${h}"]`)!;
+        const P = step.getBoundingClientRect();
+        const C = step.querySelector(".story-card")!.getBoundingClientRect();
+        const left = wide ? C.right - P.left + gutter * 2 : gutter;
+        const width = S.width - gutter * (wide ? 2 : 1) - left;
+        const floor = wide ? S.height * 0.09 : P.bottom - C.top + 20; // distance from the stage's bottom
+        const alts = alternativesTo(h);
+        const aspect = (p: { photo?: { w: number; h: number } }) => (p.photo ? p.photo.w / p.photo.h : 0.45);
+        const row = layoutRow(
+          { aspect: aspect(product(h)!) },
+          alts.map((a) => ({ aspect: aspect(a), group: LEVEL_ORDER.indexOf(a.inspiredBy!.level) })),
+          width,
+          S.height - floor - top,
+        );
+        // Wide screens line the row up under the price; phones centre it.
+        const end = row.alts.length ? row.alts.at(-1)! : row.original;
+        const x0 = left + (wide ? 0 : (width - end.left - end.width) / 2);
+        const place = (el: HTMLElement, p: Placed, b: number) => {
+          el.style.setProperty("--x", `${x0 + p.left + p.width / 2}px`);
+          el.style.setProperty("--h", `${p.height}px`);
+          el.style.setProperty("--b", `${b}px`);
+        };
+        const orig = cl.querySelector<HTMLElement>(".story-orig");
+        if (orig) place(orig, row.original, floor);
+        cl.querySelectorAll<HTMLElement>(".story-alt").forEach((el, i) => {
+          place(el, row.alts[i], floor + row.height * 0.04); // a step back from the original
+          const cap = el.querySelector("figcaption")!;
+          el.toggleAttribute("data-label", wide && (row.groupRoom.get(i) ?? 0) >= cap.offsetWidth + 8);
+        });
+        if (wide) st.style.setProperty("--row-left", `${left}px`);
+      });
+    };
+    const ro = new ResizeObserver(layout);
+    ro.observe(st);
+    sx.querySelectorAll(".story-card").forEach((c) => ro.observe(c));
+    document.fonts.ready.then(layout);
+    return () => ro.disconnect();
+  }, []);
+
   // The step whose middle crosses the middle of the screen is the one on stage.
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -219,18 +274,16 @@ export default function Story({ lang }: { lang: Lang }) {
           const o = product(h)!;
           const alts = alternativesTo(h);
           const live = step === h ? " is-on" : "";
+          // Positions and heights come from the measured layout below (useBottleLayout); none are set here.
           return (
-            <div key={h}>
+            <div key={h} data-cluster={h}>
               {/* eslint-disable-next-line @next/next/no-img-element -- transparent cut-outs */}
               {o.photo && <img className={`story-bottle story-orig${live}`} src={o.photo.src} width={o.photo.w} height={o.photo.h} alt="" />}
               {alts.map((a, i) => {
-                // Alternatives stand in closeness groups, one label per group.
                 const lvl = a.inspiredBy!.level;
-                const j = alts.slice(0, i).filter((b) => b.inspiredBy!.level === lvl).length;
-                // ponytail: fixed group starts suit up to ~6 alternatives; lay out by count if a cluster grows past that
-                const fl = [0, 0.42, 0.74][LEVEL_ORDER.indexOf(lvl)] + j * 0.14;
+                const first = i === 0 || alts[i - 1].inspiredBy!.level !== lvl; // one label per closeness group
                 return (
-                  <figure key={a.handle} className={`story-bottle story-alt${live}`} data-first={j === 0 || undefined} style={{ "--i": i, "--fl": fl } as React.CSSProperties}>
+                  <figure key={a.handle} className={`story-bottle story-alt${live}`} data-first={first || undefined} style={{ "--i": i } as React.CSSProperties}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     {a.photo && <img src={a.photo.src} width={a.photo.w} height={a.photo.h} alt="" />}
                     <figcaption>{LEVELS[lvl].name[lang]}</figcaption>
